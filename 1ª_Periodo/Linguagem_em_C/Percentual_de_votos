@@ -1,1 +1,23 @@
-
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+    float vtb, vtn, vtv, total_v; 
+    printf("\nMe diga os votos em brancos: "); 
+    scanf("%f", &vtb);
+    printf("Me diga os votos nulos: "); 
+    scanf("%f", &vtn);
+    printf("Me diga os votos validos: "); 
+    scanf("%f", &vtv);
+    total_v = vtb + vtn + vtv;
+    vtb = (vtb / total_v) * 100;
+    vtn = (vtn / total_v) * 100;
+    vtv = (vtv / total_v) * 100;
+    printf("Sem nenhuma corrupcao, teremos: ");
+    printf("\nVotos brancos: %.2f%%", vtb); 
+    printf("\nVotos nulos: %.2f%%", vtn); 
+    printf("\nVotos validos: %.2f%%", vtv);
+    return 0;
+}
