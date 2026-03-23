@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   float peso, altura1, imc;
+   printf("Digite o peso em kg: ");
+   scanf("%f", &peso);
+   printf("Digite a altura em metros: ");
+   scanf("%f", &altura1);
+   imc = peso / (altura1 * altura1); //calcula o IMC
+   printf("O IMC é: %.2f\n", imc);
+   return 0;
+}
