@@ -1,1 +1,16 @@
-
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+    float sal, perc, aumento, novo_sal; 
+    printf("\nMe diga o salario atual: "); 
+    scanf("%f", &sal); 
+    printf("Me diga o valor percentual de ajuste: "); 
+    scanf("%f", &perc);
+    novo_sal = sal * perc / 100;
+    novo_sal = sal + novo_sal;
+    printf("Seu novo salario sera: %.2f", novo_sal);
+    return 0;
+}
