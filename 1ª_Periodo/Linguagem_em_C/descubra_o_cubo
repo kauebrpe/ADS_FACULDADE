@@ -1,1 +1,13 @@
-
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   int num2, cubo; 
+    printf("\nDigite um numero:"); 
+    scanf("%d", &num2);
+    cubo = num2*num2*num2;
+    printf("O cubo de %d é %d", num2, cubo);
+    return 0;
+}
