@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   int n1, n2, total;
+   printf("Digite um numero: ");
+   scanf("%d", &n1);
+   printf("Digite outro numero: ");
+   scanf("%d", &n2);
+   total = n1 + n2;
+   printf("A soma de %d e %d é %d\n", n1, n2, total);
+   return 0;
+}
