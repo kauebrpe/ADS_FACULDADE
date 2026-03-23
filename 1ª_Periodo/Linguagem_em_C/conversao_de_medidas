@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   float metros, centimetros, milimetros;
+   printf("Digite a medida em metros: ");
+   scanf("%f", &metros);
+   centimetros = metros * 100;
+   printf("%.f metros equivalem a %.f centimetros\n", metros, centimetros);
+   milimetros = metros * 1000; //converte para milimetros
+   printf("%.f metros equivalem a %.f milimetros\n", metros, milimetros);
+   return 0;
+}
