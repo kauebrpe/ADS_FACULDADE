@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+float horatrab, valorhora, salario;
+   printf("Digite o numero de horas trabalhadas: ");
+   scanf("%f", &horatrab);
+   printf("Digite o valor da hora trabalhada: ");
+   scanf("%f", &valorhora);
+   salario = horatrab * valorhora;
+   printf("O salario a ser pago é: R$ %.2f\n", salario);
+   return 0;
+}
