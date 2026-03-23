@@ -1,1 +1,15 @@
-
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+    int num1, resultado;  
+    printf("\nDigite um numero:"); 
+    scanf("%d", &num1);  
+    resultado = num1 - 1; 
+    printf("O antecessor de %d", num1); printf(" é %d", resultado);
+    resultado = num1 + 1; 
+    printf("\nE o sucessor de %d", num1); printf(" é %d", resultado);
+    return 0;
+}
