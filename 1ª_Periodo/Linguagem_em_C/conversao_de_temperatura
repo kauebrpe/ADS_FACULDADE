@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   float c, f;
+   printf("Digite a temperatura em graus Celsius: ");
+   scanf("%f", &c);
+   f = (c * 9/5) + 32;
+   printf("A temperatura em graus Fahrenheit é: %.1f\n", f);
+   return 0;
+}
