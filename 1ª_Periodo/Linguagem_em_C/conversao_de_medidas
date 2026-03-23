@@ -9,7 +9,7 @@ int main(){
    scanf("%f", &metros);
    centimetros = metros * 100;
    printf("%.f metros equivalem a %.f centimetros\n", metros, centimetros);
-   milimetros = metros * 1000; //converte para milimetros
+   milimetros = metros * 1000;
    printf("%.f metros equivalem a %.f milimetros\n", metros, milimetros);
    return 0;
 }
