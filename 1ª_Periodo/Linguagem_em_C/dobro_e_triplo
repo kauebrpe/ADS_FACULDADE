@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   int num, dobro, triplo;
+   printf("Digite um numero: ");
+   scanf("%d", &num);
+   dobro = num * 2;
+   triplo = num * 3;
+   printf("O dobro de %d é %d e o triplo é %d\n", num, dobro, triplo);
+   return 0;
+}
