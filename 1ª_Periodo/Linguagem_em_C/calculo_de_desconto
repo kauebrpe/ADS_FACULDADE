@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   float preco, desconto, precofinal;
+   printf("Digite o preco do produto: ");
+   scanf("%f", &preco);
+   printf("Digite o valor do desconto: ");
+   scanf("%f", &desconto);
+   precofinal = preco - desconto;
+   printf("O preco final do produto é: R$ %.2f\n", precofinal);
+   return 0;
+}
