@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   float base, altura, area;
+   printf("Digite a base do retangulo: ");
+   scanf("%f", &base);
+   printf("Digite a altura do retangulo: ");
+   scanf("%f", &altura);
+   area = base * altura;
+   printf("A area do retangulo é: %.2f", area);
+   return 0;
+}
