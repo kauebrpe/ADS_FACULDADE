@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+   float distancia, combustivel, consumo;
+   printf("Digite a distancia percorrida em km: ");
+   scanf("%f", &distancia);
+   printf("Digite o total de combustivel gasto em litros: ");
+   scanf("%f", &combustivel);
+   consumo = distancia / combustivel;
+   printf("O consumo medio de combustivel é: %.2f km/l\n", consumo);
+   return 0;
+}
