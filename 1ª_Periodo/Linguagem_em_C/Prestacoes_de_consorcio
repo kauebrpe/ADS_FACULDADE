@@ -1,1 +1,20 @@
-
+#include <stdio.h>
+#include <unistd.h>
+void limpar(){
+printf("\033[2J\033[H");
+}
+int main(){
+    float total_prestacoes, prestacoes_pagas, valor_prestacao, faltando,saldo_devedor; 
+    printf("\nMe diga o numero total de prestacoes:"); 
+    scanf("%f", &total_prestacoes);
+    printf("Me diga o numero total de prestacoes pagas: "); 
+    scanf("%f", &prestacoes_pagas);
+    printf("Me diga o valor de cada prestacao: "); 
+    scanf("%f", &valor_prestacao);
+    faltando = total_prestacoes - prestacoes_pagas;
+    saldo_devedor = faltando * valor_prestacao;
+    limpar();
+    printf("Faltam %.0f prestacoes\n", faltando);
+    printf("Saldo devedor: %.2f\n", saldo_devedor);
+    return 0;
+}
