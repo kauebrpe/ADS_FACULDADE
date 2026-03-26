@@ -1,67 +1,66 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
     <title>Contato</title>
 </head>
-
 <body>
-
-    <header>
-        <h1>Meu Projeto</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section>
-            <h2>Entre em Contato</h2>
-
-            <form action="/enviar" method="POST">
-
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-                <br><br>
-
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
-                <br><br>
-
-                <label for="telefone">Telefone:</label>
-                <input type="number" id="telefone" name="telefone" placeholder="Digite seu telefone">
-                <br><br>
-
-                <label for="assunto">Assunto:</label>
-                <input type="text" id="assunto" name="assunto" placeholder="Digite o assunto">
-                <br><br>
-
-                <label for="mensagem">Mensagem:</label>
-                <br>
-                <textarea id="mensagem" name="mensagem"></textarea>
-                <br><br>
-                
-                <input type="checkbox" id="termos" name="termos">
-                <label for="termos">Aceito os termos de uso
-                </label>
-                
-                <br><br>
-
-                <button type="submit">Enviar</button>
-
-            </form>
-
-        </section>
-    </main>
-
-    <footer>
-        <p>2026 - Todos os direitos reservados</p>
-    </footer>
-
+    <center>
+        <header>
+            <h1>Meu Projeto</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section>
+                <h2>Entre em Contato</h2>
+                <form action="/enviar" method="POST">
+                    <label for="nome">Nome:</label><br>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    <br><br>
+                    <label for="email">E-mail:</label><br>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                    <br><br>
+                    <label for="telefone">Telefone:</label><br>
+                    <input type="number" id="telefone" name="telefone" placeholder="Digite seu telefone">
+                    <br><br>
+                    <label for="assunto">Assunto:</label><br>
+                    <input type="text" id="assunto" name="assunto" placeholder="Digite o assunto">
+                    <br><br>
+                    <label for="mensagem">Mensagem:</label><br>
+                    <textarea id="mensagem" name="mensagem"></textarea>
+                    <br><br>
+                    <!-- Termos com abrir/fechar -->
+                    <details>
+                        <summary>Ver termos de uso</summary>
+                        <p><strong>Termos de Uso do Meu Projeto</strong></p>
+                        <p>Ao utilizar este site, você concorda integralmente com os seguintes termos:</p>
+                        <ul>
+                            <li><strong>Aceitação dos Termos:</strong> Ao acessar este site, você declara que leu, compreendeu e aceitou todos os termos aqui estabelecidos, concordando em respeitar as normas e diretrizes do serviço.</li>
+                            <li><strong>Uso das Informações:</strong> As informações fornecidas serão utilizadas exclusivamente para contato e comunicação relacionados ao projeto, sendo tratadas com confidencialidade e segurança, conforme a legislação aplicável.</li>
+                            <li><strong>Responsabilidade do Usuário:</strong> O usuário se compromete a fornecer dados precisos e verdadeiros. É proibido o envio de informações falsas ou fraudulentas.</li>
+                            <li><strong>Propriedade Intelectual:</strong> Todo conteúdo, texto, imagem, design e materiais presentes neste site são de propriedade exclusiva do <strong>Meu Projeto</strong>, sendo proibida a reprodução, distribuição ou utilização não autorizada.</li>
+                            <li><strong>Alterações nos Termos:</strong> O <strong>Meu Projeto</strong> reserva-se o direito de alterar estes termos a qualquer momento, sendo responsabilidade do usuário consultar periodicamente esta seção.</li>
+                            <li><strong>Limitação de Responsabilidade:</strong> O <strong>Meu Projeto</strong> não se responsabiliza por quaisquer danos diretos ou indiretos decorrentes do uso inadequado deste site ou da impossibilidade de acesso às informações nele contidas.</li>
+                            <li><strong>Legislação Aplicável:</strong> Estes Termos de Uso são regidos pelas leis da República Federativa do Brasil, competindo aos tribunais da comarca da sede do projeto a resolução de quaisquer controvérsias.</li>
+                        </ul>
+                        <p>Ao marcar “Aceito os termos”, você confirma estar de acordo com todas as condições acima.</p>
+                        <p>
+                            <input type="checkbox" id="termos" name="termos">
+                            <label for="termos"><strong>Aceito os termos de uso</strong></label>
+                        </p>
+                    </details>
+                    <br><br>
+                    <button type="submit">Enviar</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>2026 - Todos os direitos reservados</p>
+        </footer>
+    </center>
 </body>
-
 </html>
