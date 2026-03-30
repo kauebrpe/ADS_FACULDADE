@@ -9,7 +9,7 @@ int main(){
    scanf("%f", &preco);
    printf("Digite o valor do desconto: ");
    scanf("%f", &desconto);
-   precofinal = preco - desconto;
+   precofinal = preco - (preco * desconto /100);
    printf("O preco final do produto é: R$ %.2f\n", precofinal);
    return 0;
 }
