@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+  int numero;
+  printf("Digite um número: ");
+  scanf("%d", &numero);
+  if ( numero >= 10 && numero <= 50){
+    printf("O número está no intervalo.\n");
+  }
+  else{
+    printf("O número está fora do intervalo.\n");
+  }
+  return 0;
+}
