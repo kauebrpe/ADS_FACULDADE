@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+  int num1, num2, num3;
+  printf("me diga 3 numeros: ");
+  scanf("%d %d %d", &num1, &num2, &num3);
+  if ( num1 == num2 && num2 == num3){
+    printf("todos os numeros são iguais\n");
+  }
+  else if (num1 == num2 || num1 == num3 || num2 == num3){
+    printf("Dois numeros sao iguais\n");
+  }
+  else {
+    printf("todos os numeros são diferentes\n");
+  }
+
+return 0;
+}
