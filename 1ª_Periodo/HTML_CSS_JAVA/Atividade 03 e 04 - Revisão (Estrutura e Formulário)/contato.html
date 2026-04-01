@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>TechConnect - Contato</title>
+</head>
+<body>
+
+    <header>
+        <h1>TechConnect</h1>
+        <p>Soluções Digitais</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+
+        <section>
+            <h2>Entre em Contato</h2>
+            <p>
+                Tem alguma dúvida ou sugestão? Preencha o formulário abaixo
+                e nossa equipe entrará em contato em breve.
+            </p>
+        </section>
+
+        <section>
+            <h2>Formulário de Contato</h2>
+
+            <form action="/enviar" method="POST">
+
+                <label for="nome">Nome:</label><br>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                <br><br>
+
+                <label for="email">E-mail:</label><br>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                <br><br>
+
+                <label for="telefone">Telefone:</label><br>
+                <input type="number" id="telefone" name="telefone" placeholder="Digite seu telefone">
+                <br><br>
+
+                <label for="assunto">Assunto:</label><br>
+                <input type="text" id="assunto" name="assunto" placeholder="Digite o assunto">
+                <br><br>
+
+                <label for="mensagem">Mensagem:</label><br>
+                <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem..."></textarea>
+                <br><br>
+
+                <details>
+                    <summary>Ver termos de uso</summary>
+                    <p><strong>Termos de Uso da TechConnect</strong></p>
+                    <ul>
+                        <li><strong>Aceitação dos Termos:</strong> Ao utilizar este site, você declara que leu e aceitou todos os termos.</li>
+                        <li><strong>Uso das Informações:</strong> As informações fornecidas serão utilizadas exclusivamente para contato.</li>
+                        <li><strong>Responsabilidade do Usuário:</strong> O usuário se compromete a fornecer dados precisos e verdadeiros.</li>
+                        <li><strong>Alterações nos Termos:</strong> A TechConnect pode alterar estes termos a qualquer momento.</li>
+                    </ul>
+                    <p>
+                        <input type="checkbox" id="termos" name="termos">
+                        <label for="termos"><strong>Aceito os termos de uso</strong></label>
+                    </p>
+                </details>
+                <br>
+
+                <button type="submit">Enviar</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>2026 - TechConnect - Todos os direitos reservados</p>
+    </footer>
+
+</body>
+</html>
