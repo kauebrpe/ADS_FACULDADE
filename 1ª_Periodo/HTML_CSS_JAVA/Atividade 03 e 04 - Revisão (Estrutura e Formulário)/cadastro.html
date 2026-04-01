@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>TechConnect - Cadastro</title>
+</head>
+<body>
+
+    <header>
+        <h1>TechConnect</h1>
+        <p>Soluções Digitais</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- Seção 1: Apresentação do sistema -->
+        <section>
+            <h2>O que é a TechConnect?</h2>
+
+            <p>
+                A TechConnect é uma plataforma digital especializada em conectar clientes
+                a serviços de tecnologia. Desenvolvemos sites, aplicativos e oferecemos
+                suporte técnico para pessoas e empresas de todos os tamanhos.
+            </p>
+
+            <p>
+                Nossa plataforma foi criada para ser acessível a qualquer pessoa. Você não
+                precisa ter conhecimento técnico para usar o sistema. Basta se cadastrar,
+                descrever o que precisa e nossa equipe cuidará do resto.
+            </p>
+
+            <p>
+                Qualquer pessoa pode usar a TechConnect: estudantes, empreendedores,
+                empresas e profissionais de tecnologia. O acesso é gratuito e o cadastro
+                leva menos de dois minutos.
+            </p>
+        </section>
+
+        <!-- Seção 2: Formulário de cadastro -->
+        <section>
+            <h2>Cadastro de Usuário</h2>
+
+            <form action="/cadastrar" method="POST">
+
+                <label for="nome">Nome Completo:</label><br>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                <br><br>
+
+                <label for="email">E-mail:</label><br>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                <br><br>
+
+                <label for="senha">Senha:</label><br>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                <br><br>
+
+                <label for="dataNascimento">Data de Nascimento:</label><br>
+                <input type="date" id="dataNascimento" name="dataNascimento">
+                <br><br>
+
+                <label for="telefone">Telefone:</label><br>
+                <input type="number" id="telefone" name="telefone" placeholder="Digite seu telefone">
+                <br><br>
+
+                <label>Gênero:</label><br>
+                <input type="radio" id="masculino" name="genero" value="masculino">
+                <label for="masculino">Masculino</label><br>
+                <input type="radio" id="feminino" name="genero" value="feminino">
+                <label for="feminino">Feminino</label><br>
+                <input type="radio" id="outro" name="genero" value="outro">
+                <label for="outro">Prefiro não informar</label>
+                <br><br>
+
+                <label>Interesses:</label><br>
+                <input type="checkbox" id="sites" name="interesses" value="sites">
+                <label for="sites">Desenvolvimento de Sites</label><br>
+                <input type="checkbox" id="apps" name="interesses" value="apps">
+                <label for="apps">Criação de Aplicativos</label><br>
+                <input type="checkbox" id="suporte" name="interesses" value="suporte">
+                <label for="suporte">Suporte Técnico</label>
+                <br><br>
+
+                <label for="cidade">Cidade:</label><br>
+                <select id="cidade" name="cidade">
+                    <option value="">Selecione sua cidade</option>
+                    <option value="recife">Recife</option>
+                    <option value="olinda">Olinda</option>
+                    <option value="jaboatao">Jaboatão dos Guararapes</option>
+                    <option value="caruaru">Caruaru</option>
+                    <option value="outro">Outra</option>
+                </select>
+                <br><br>
+
+                <label for="mensagem">Mensagem:</label><br>
+                <textarea id="mensagem" name="mensagem" placeholder="Conte-nos o que você precisa..."></textarea>
+                <br><br>
+
+                <details>
+                    <summary>Ver termos de uso</summary>
+                    <p><strong>Termos de Uso da TechConnect</strong></p>
+                    <ul>
+                        <li><strong>Aceitação dos Termos:</strong> Ao se cadastrar, você declara que leu e aceitou todos os termos.</li>
+                        <li><strong>Uso das Informações:</strong> Seus dados serão utilizados apenas para contato relacionado à plataforma.</li>
+                        <li><strong>Responsabilidade do Usuário:</strong> Você se compromete a fornecer dados verdadeiros.</li>
+                        <li><strong>Privacidade:</strong> Suas informações são tratadas com confidencialidade e segurança.</li>
+                        <li><strong>Alterações:</strong> A TechConnect pode atualizar estes termos a qualquer momento.</li>
+                    </ul>
+                    <p>
+                        <input type="checkbox" id="termos" name="termos">
+                        <label for="termos"><strong>Aceito os termos de uso</strong></label>
+                    </p>
+                </details>
+                <br>
+
+                <button type="submit">Enviar Cadastro</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>2026 - TechConnect - Todos os direitos reservados</p>
+    </footer>
+
+</body>
+</html>
