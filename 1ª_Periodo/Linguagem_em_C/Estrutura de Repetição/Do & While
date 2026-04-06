@@ -1,0 +1,12 @@
+include <stdio.h>
+int main() {
+   int id, cont = 1;
+   do {
+      printf("Digite idade: ");
+      scanf("%i", &id);
+      cont ++;
+   }
+   while (cont <= 2);
+   
+   return 0;
+}
