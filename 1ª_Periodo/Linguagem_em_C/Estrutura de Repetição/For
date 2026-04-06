@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main() {
+   int id, cont;
+   for (   cont = 1; cont <= 37, cont++;){
+      printf("Digite a idade: ");
+      scanf("%i", &id);
+   }
+    return 0;
+}
+
