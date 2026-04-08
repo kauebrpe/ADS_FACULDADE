@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>StreamPlay - Planos</title>
+</head>
+<body>
+
+    <!-- TÍTULO -->
+    <h1>Planos StreamPlay</h1>
+
+    <!-- TABELA DE PLANOS -->
+    <table border="1">
+
+        <!-- CABEÇALHO -->
+        <thead>
+            <tr>
+                <!-- colspan = ocupa mais de uma coluna -->
+                <th colspan="6">Comparação de Planos</th>
+            </tr>
+
+            <tr>
+                <th>Plano</th>
+                <th>Qualidade</th>
+                <th>Telas</th>
+                <th>Download</th>
+                <th>Preço</th>
+                <th>Observação</th>
+            </tr>
+        </thead>
+
+        <!-- CORPO -->
+        <tbody>
+
+            <!-- PLANO BÁSICO -->
+            <tr>
+                <!-- rowspan = ocupa mais de uma linha -->
+                <td rowspan="2">Básico</td>
+                <td>HD</td>
+                <td>1</td>
+                <td>Não</td>
+                <td>R$ 19,90</td>
+                <td>Plano mais simples</td>
+            </tr>
+            <tr>
+                <!-- linha extra usando rowspan -->
+                <td colspan="5">Ideal para uso individual</td>
+            </tr>
+
+            <!-- PLANO PADRÃO -->
+            <tr>
+                <td rowspan="2">Padrão</td>
+                <td>Full HD</td>
+                <td>2</td>
+                <td>Sim</td>
+                <td>R$ 29,90</td>
+                <td>Mais popular</td>
+            </tr>
+            <tr>
+                <td colspan="5">Bom custo-benefício</td>
+            </tr>
+
+            <!-- PLANO PREMIUM -->
+            <tr>
+                <td rowspan="2">Premium</td>
+                <td>4K</td>
+                <td>4</td>
+                <td>Sim</td>
+                <td>R$ 49,90</td>
+                <td>Melhor qualidade</td>
+            </tr>
+            <tr>
+                <td colspan="5">Para famílias e alta qualidade</td>
+            </tr>
+
+        </tbody>
+
+        <!-- RODAPÉ -->
+        <tfoot>
+            <tr>
+                <!-- mensagem para o usuário -->
+                <td colspan="6">Escolha o plano que melhor atende você!</td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</body>
+</html>
