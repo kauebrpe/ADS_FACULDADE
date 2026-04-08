@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>Tabela</title>
+	</head>
+	<body>
+				<table border="1" width="100%">
+				
+
+
+			<thead>
+				<tr>
+					<th rowspan="2">Plano</th>
+					<th colspan="3">Benefícios</th>
+					<th rowspan="2">Preço</th>
+				</tr>
+
+				<tr>
+					<th>Qualidade</th>
+					<th>Telas</th>
+					<th>Downloads</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr>
+					<td>Básico</td>
+					<td>HD</td>
+					<td>1 tela</td>
+					<td>Não</td>
+					<td>R$ 19,90</td>
+				</tr>
+
+				<tr>
+					<td>Padrão</td>
+					<td>Full HD</td>
+					<td>2 telas</td>
+					<td>Sim</td>
+					<td>R$ 29,90</td>
+				</tr>
+
+				<tr>
+					<td>Premium</td>
+					<td>4K</td>
+					<td>4 telas</td>
+					<td>Sim</td>
+					<td>R$ 49,90</td>
+				</tr>
+
+			</tbody>
+
+			<tfoot>
+				<tr>
+					<td colspan="5" align="justify	">
+						Escolha o plano ideal para você
+					</td>
+				</tr>
+			</tfoot>
+
+		</table>
+		
+		<table>
+<tr>
+<th>Nome</th>
+<th>Idade</th>
+</tr>
+<tr>
+<td>João</td>
+<td>20</td>
+</tr>
+</table>
+		
+		<video controls width="1000" height="500">
+			<source src="cadastrodeavaliacoes.mp4">
+		</video>
+		<br>
+		<video controls width="1000" height="500">
+			<source src="https://www.youtube.com/watch?v=eCmIALYTqPk&t=1s">
+		</video>
+		
+		<iframe width="300" src="https://www.youtube.com/watch?v=eCmIALYTqPk&t=1s"></iframe>
+		
+		
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/sOdd7kritf4?si=ZiYOgim5nbAsCXSc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		
+		<img src="matriz.png" alt="Matriz de Confusão" width="500" height="500">
+	</body>
+</html>
+
+
