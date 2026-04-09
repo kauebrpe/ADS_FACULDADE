@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int num, maior;
+
+    printf("Digite numeros (0 para parar): ");
+    scanf("%d", &num);
+
+    maior = num;
+
+    while (num != 0) {
+        if (num > maior) {
+            maior = num;
+        }
+        printf("Digite: ");
+        scanf("%d", &num);
+    }
+
+    printf("Maior numero: %d\n", maior);
+    return 0;
+}
