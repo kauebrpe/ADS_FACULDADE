@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    int canal, pessoas;
+    int a1 = 0, a2 = 0, a3 = 0, a4 = 0, total = 0;
+
+    while (1) {
+        printf("Digite o canal (1-SBT, 2-Record, 3-Globo, 4-RedeTV, 0 para parar): ");
+        scanf("%d", &canal);
+        if (canal == 0) break;
+
+        printf("Digite o numero de pessoas assistindo: ");
+        scanf("%d", &pessoas);
+
+        if (canal == 1) a1 += pessoas;
+        else if (canal == 2) a2 += pessoas;
+        else if (canal == 3) a3 += pessoas;
+        else if (canal == 4) a4 += pessoas;
+
+        total += pessoas;
+    }
+
+    if (total > 0) {
+        printf("Percentual de audiencia:\n");
+        printf("SBT: %.2f%%\n", (a1 * 100.0) / total);
+        printf("Record: %.2f%%\n", (a2 * 100.0) / total);
+        printf("Globo: %.2f%%\n", (a3 * 100.0) / total);
+        printf("RedeTV: %.2f%%\n", (a4 * 100.0) / total);
+    } else {
+        printf("Nenhuma informacao registrada.\n");
+    }
+
+    return 0;
+}
