@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <time.h>
+void clear() { printf("\033[2J\033[H"); }
+
+int main() {
+  int i = 1,
+  idade = 0, sexo = 0, opn = 0, qnt = 0;
+  float per, med, total_homens = 0, idade_total = 0, qnt_F = 0;
+
+  for(i = 1; i <= 15; i++){
+    printf("Digite sua idade: ");
+    scanf("%d", &idade);
+    while(sexo != 1 && sexo != 2){
+    clear();
+    printf("Digite seu sexo:\nUtilize 1 para Feminino e 2 para Masculino: ");
+    scanf("%d", &sexo);
+    if(sexo != 1 && sexo != 2){
+      clear();
+      printf("Sexo inválido. Digite novamente.\n");
+      sleep(2);
+    }}
+    clear();
+    printf("Digite sua opinião:\nUtilize:\n1 - Não gostei\n2 - Esperava mais\n3 - Vale o ingresso\n4 - Excelente\n\n");
+    scanf("%d", &opn);
+    clear();
+
+    if (opn == 1 && sexo == 2){
+      total_homens++;
+    }
+
+    if (opn == 4 && sexo == 1){
+      idade_total += idade;
+      qnt_F++;
+    }
+
+    if (opn == 2){
+      qnt++;
+    }
+  }
+
+  per = (total_homens / 15.0) * 100;
+
+  if(qnt_F > 0){
+    med = idade_total / qnt_F;
+  }
+
+  printf("Percentual de Homens que não gostaram do filme: %.2f%%\n", per);
+  printf("Quantidade de pessoas que esperavam mais do filme: %d\n", qnt);
+  if(qnt_F > 0){
+    printf("Média de idade de Mulheres que responderam Excelente: %.2f\n", med);
+  } else {
+    printf("Não há mulheres que responderam Excelente.\n");
+  }
+
+  return 0;
+}
