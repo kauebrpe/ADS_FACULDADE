@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int a, b, resultado = 0, i;
+
+    printf("Digite o primeiro numero: ");
+    scanf("%d", &a);
+    printf("Digite o segundo numero: ");
+    scanf("%d", &b);
+
+    for (i = 0; i < b; i++) {
+        resultado += a;
+    }
+
+    printf("Resultado da multiplicação: %d\n", resultado);
+    return 0;
+}
