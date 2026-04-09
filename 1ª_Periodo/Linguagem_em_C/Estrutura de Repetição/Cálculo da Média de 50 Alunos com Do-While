@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int i = 1, nota;
+    float soma = 0, media;
+
+    do {
+        printf("Nota do aluno %d: ", i);
+        scanf("%d", &nota);
+        soma += nota;
+        i++;
+    } while (i <= 50);
+
+    media = soma / 50;
+    printf("Media: %.2f\n", media);
+
+    return 0;
+}
