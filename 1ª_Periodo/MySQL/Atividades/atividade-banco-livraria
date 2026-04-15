@@ -1,48 +1,37 @@
-
--- BANCO DE DADOS: REDE DE LIVRARIAS (DER)
-
+-- CRIAR BANCO
 CREATE DATABASE Atividade2;
 USE Atividade2;
-
--- 1. AUTOR
-
+ 
+-- AUTOR
 CREATE TABLE Autor (
     id_autor INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     nacionalidade VARCHAR(60)
 );
-
-
--- 2. LIVRO
-
+ 
+-- LIVRO
 CREATE TABLE Livro (
     isbn CHAR(13) PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     preco DECIMAL(10,2),
     ano_publi DATE
 );
-
-
--- 3. FILIAL
-
+ 
+-- FILIAL
 CREATE TABLE Filial (
     id_filial INT AUTO_INCREMENT PRIMARY KEY,
     cidade VARCHAR(80) NOT NULL,
     endereco VARCHAR(150)
 );
-
-
--- 4. CLIENTE
-
+ 
+-- CLIENTE
 CREATE TABLE Cliente (
     cpf CHAR(11) PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     telefone VARCHAR(15)
 );
-
-
--- 5. VENDA
-
+ 
+-- VENDA
 CREATE TABLE Venda (
     id_venda INT AUTO_INCREMENT PRIMARY KEY,
     data_venda DATE NOT NULL,
@@ -52,12 +41,10 @@ CREATE TABLE Venda (
     FOREIGN KEY (cpf_cliente) REFERENCES Cliente(cpf),
     FOREIGN KEY (id_filial) REFERENCES Filial(id_filial)
 );
-
-
--- RELACIONAMENTO N:M (DER)
-
-
--- AUTOR escreve LIVRO (N:M)
+ 
+-- RELACIONAMENTOS N:M
+ 
+-- AUTOR escreve LIVRO
 CREATE TABLE Escreve (
     id_autor INT,
     isbn CHAR(13),
@@ -65,8 +52,8 @@ CREATE TABLE Escreve (
     FOREIGN KEY (id_autor) REFERENCES Autor(id_autor),
     FOREIGN KEY (isbn) REFERENCES Livro(isbn)
 );
-
--- FILIAL possui LIVRO (N:M)
+ 
+-- FILIAL possui LIVRO
 CREATE TABLE Possui (
     id_filial INT,
     isbn CHAR(13),
@@ -75,8 +62,8 @@ CREATE TABLE Possui (
     FOREIGN KEY (id_filial) REFERENCES Filial(id_filial),
     FOREIGN KEY (isbn) REFERENCES Livro(isbn)
 );
-
--- VENDA inclui LIVRO (N:M)
+ 
+-- VENDA inclui LIVRO
 CREATE TABLE Inclui (
     id_venda INT,
     isbn CHAR(13),
@@ -86,3 +73,39 @@ CREATE TABLE Inclui (
     FOREIGN KEY (id_venda) REFERENCES Venda(id_venda),
     FOREIGN KEY (isbn) REFERENCES Livro(isbn)
 );
+
+INSERIR dados:
+
+-- AUTORES
+INSERT INTO Autor (nome, nacionalidade) VALUES
+('Machado de Assis', 'Brasileiro'),
+('Clarice Lispector', 'Brasileira'),
+('George Orwell', 'Inglês');
+ 
+-- LIVROS
+INSERT INTO Livro VALUES
+('1111111111111', 'Dom Casmurro', 39.90, '1899-01-01'),
+('2222222222222', 'A Hora da Estrela', 29.90, '1977-01-01'),
+('3333333333333', '1984', 49.90, '1949-01-01');
+ 
+-- FILIAIS
+INSERT INTO Filial (cidade, endereco) VALUES
+('João Pessoa', 'Centro'),
+('Recife', 'Boa Viagem');
+ 
+-- CLIENTES
+INSERT INTO Cliente VALUES
+('12345678901', 'Ana Silva', '83999990001'),
+('98765432100', 'Carlos Souza', '83999990002');
+ 
+-- VENDAS
+INSERT INTO Venda (data_venda, total, cpf_cliente, id_filial) VALUES
+('2026-04-10', 79.80, '12345678901', 1);
+ 
+-- RELACIONAMENTOS
+INSERT INTO Escreve VALUES (1, '1111111111111');
+INSERT INTO Possui VALUES (1, '1111111111111', 10);
+INSERT INTO Inclui VALUES (1, '1111111111111', 2, 39.90);
+
+
+SELECT * FROM Livro;
