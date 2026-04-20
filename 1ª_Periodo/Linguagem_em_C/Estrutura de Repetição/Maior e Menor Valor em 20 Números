@@ -22,29 +22,6 @@ int main() {
 
 OU
 
-#include <stdio.h>
-
-int main() {
-    int i, num, maior, menor;
-
-    printf("Digite o 1º numero: ");
-    scanf("%d", &num);
-    maior = menor = num;
-
-    for (i = 2; i <= 50; i++) {
-        printf("Digite o %dº numero: ", i);
-        scanf("%d", &num);
-
-        if (num > maior) maior = num;
-        if (num < menor) menor = num;
-    }
-
-    printf("Maior numero: %d\n", maior);
-    printf("Menor numero: %d\n", menor);
-    return 0;
-}
-
-OU
 
 #include <stdio.h>
 
@@ -57,5 +34,11 @@ int main() {
         if (num > maior){
             maior = num;
         }
+        if (num < menor){
+            menor = num;
+        }
     }
+    printf("O maior numero digitado foi: %d", maior);
+    printf("\nO menor numero digitado foi: %d", menor);
+    return 0;
 }
