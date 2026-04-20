@@ -25,3 +25,26 @@ int main() {
 
     return 0;
 }
+
+OU
+
+#include <stdio.h>
+
+int main() {
+    float media;
+    int num, qtp=0, soma=0;
+    do{
+        printf("Digite um numero:");
+        scanf("%d",&num);
+        if (num>0){
+            if(num%2==0){
+                soma = soma + num;
+                qtp= qtp + 1;
+            }
+        }
+    }
+    while(num!=0);
+    media = soma/qtp;
+    printf("A media dos numeros pares e: %.2f",media);
+    return 0;
+}
