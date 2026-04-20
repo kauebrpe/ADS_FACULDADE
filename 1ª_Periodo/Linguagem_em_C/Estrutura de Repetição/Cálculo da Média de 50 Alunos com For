@@ -15,3 +15,23 @@ int main() {
 
     return 0;
 }
+
+OU
+
+#include <stdio.h>
+
+int main() {
+    int cont, nota;
+    float soma = 0, media;
+
+    for (cont = 1; cont <= 50; cont++) { //cont++ vai para o proximo numero
+        printf("Nota do aluno %d: ", cont);
+        scanf("%d", &nota);
+        soma += nota;
+    }
+
+    media = soma / 50;
+    printf("Media: %.2f\n", media);
+
+    return 0;
+}
