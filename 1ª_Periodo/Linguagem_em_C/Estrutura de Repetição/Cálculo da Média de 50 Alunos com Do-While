@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int i = 1, nota;
+    int i = 1, nota; // posso botar "nota" no float para a nota vim quebrado (7.5)
     float soma = 0, media;
 
     do {
@@ -12,6 +12,27 @@ int main() {
     } while (i <= 50);
 
     media = soma / 50;
+    printf("Media: %.2f\n", media);
+
+    return 0;
+}
+
+OU
+
+#include <stdio.h>
+
+int main() {
+    int cont = 1, nota;
+    float soma = 0, media;
+
+    do {
+        printf("Nota do aluno %d: ", cont);
+        scanf("%d", &nota);
+        soma += nota;
+        cont= cont + 1;
+    } while (cont <= 5);
+
+    media = soma / 5;
     printf("Media: %.2f\n", media);
 
     return 0;
