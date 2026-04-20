@@ -15,3 +15,20 @@ int main() {
     printf("Resultado da multiplicação: %d\n", resultado);
     return 0;
 }
+
+OU
+
+
+#include <stdio.h>
+int main() {
+    int n1, n2, cont, soma = 0;
+    printf("Digite o primeiro numero: ");
+    scanf("%d", &n1);
+    printf("Digite o segundo numero: ");
+    scanf("%d", &n2);
+    for (cont = 1; cont < n2; cont++) {
+        soma = soma + n1;
+    }
+    printf("%d x %d = %d\n", n1, n2, soma);
+    return 0;
+}
