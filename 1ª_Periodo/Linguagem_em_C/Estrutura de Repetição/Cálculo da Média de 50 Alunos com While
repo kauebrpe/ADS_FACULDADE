@@ -16,3 +16,23 @@ int main() {
 
     return 0;
 }
+
+OU
+
+#include <stdio.h>
+
+int main() {
+    int cont = 1, nota;
+    float soma = 0, media;
+
+    while (cont <= 50) {
+        printf("Nota do aluno %d: ", cont);
+        scanf("%d", &nota);
+        soma = soma + nota;
+        cont = cont + 1;
+    }
+    media = soma / 50;
+    printf("Media: %.2f\n", media);
+    
+    return 0;
+}
