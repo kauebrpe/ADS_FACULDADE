@@ -14,3 +14,36 @@ int main() {
     printf("Soma dos impares: %d\n", soma);
     return 0;
 }
+
+OU
+
+#include <stdio.h>
+
+int main() {
+    int cont, num, soma = 0;
+
+    for (cont = 1; cont <= 5; cont++) {
+        printf("Digite o %dº numero: ", cont);
+        scanf("%d", &num);
+        if (num % 2 && num != 0) {
+            soma += num;
+        }
+    }
+
+    printf("Soma dos impares: %d\n", soma);
+    return 0;
+}
+ OU
+#include <stdio.h>
+int main (){
+    int cont;
+    int num, soma = 0;
+    for (cont = 1; cont <= 5; cont++)
+    printf("Digite o %dº numero: ", cont);
+    scanf("%d", &num);
+    if (num % 2 && num != 0){
+            soma = soma + num;
+    }
+    printf("Soma dos impares: %d\n", soma);
+    return 0;
+}
