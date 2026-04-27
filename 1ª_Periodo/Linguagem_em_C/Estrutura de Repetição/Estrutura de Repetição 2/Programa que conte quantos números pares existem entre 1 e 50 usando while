@@ -1,17 +1,29 @@
 #include <stdio.h>
+
 int main() {
     int contador, pares;
-
     contador = 1;
     pares = 0;
-
-    while (contador <= 50) {
-        if (contador % 2 == 0) {
+    //contador → vai de 1 até 50 
+    //pares → vai contar quantos números pares existem
+    //contador = 1;
+    //pares = 0;
+    while (contador <= 50) { //o loop rodar de 1 até 50
+        if (contador % 2 == 0) { 
+        //contador % 2 → pega o resto da divisão por 2 e Se for 0, é par
             pares++;
+        //pares++ → soma +1 na contagem
         }
         contador++;
-    }
-
-    printf("Quantidade de numeros pares: %d\n", pares);
+        //Sem isso → loop infinito
+        }
+        printf("Quantidade de numeros pares: %d\n", pares);
     return 0;
+    //O programa faz isso:
+    //Começa no número 1
+    //Vai até o 50
+    //Cada número:
+    //verifica se é par
+    //se for, soma +1
+    //No final, mostra o total
 }
