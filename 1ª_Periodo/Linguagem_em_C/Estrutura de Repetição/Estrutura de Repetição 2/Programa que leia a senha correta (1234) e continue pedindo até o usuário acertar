@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main() {
+    int senha;
+    senha = 0;
+    while (senha != 1234) {
+        printf("Digite a senha: ");
+        scanf("%d", &senha);
+        if (senha != 1234) {
+            printf("Senha errada!\n");
+        }
+    }
+    printf("Acertou!\n");
+    return 0;
+}
