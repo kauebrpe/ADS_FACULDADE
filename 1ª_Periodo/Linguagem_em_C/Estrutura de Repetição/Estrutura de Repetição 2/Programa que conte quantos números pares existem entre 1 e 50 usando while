@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main() {
+    int contador, pares;
+
+    contador = 1;
+    pares = 0;
+
+    while (contador <= 50) {
+        if (contador % 2 == 0) {
+            pares++;
+        }
+        contador++;
+    }
+
+    printf("Quantidade de numeros pares: %d\n", pares);
+    return 0;
+}
