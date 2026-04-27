@@ -1,0 +1,13 @@
+//2. Faça um programa que leia um número e exiba a tabuada dele (de 1 a 10) usando while.
+
+#include <stdio.h>
+int main() {
+    int m = 1, numero = 0;
+    printf("Digite um numero");
+    scanf("%d", &numero);
+    while (m <= 10) {
+        printf("%d x %d = %d\n", numero, m, numero * m);
+        m = m + 1;
+    }
+    return 0;
+}
