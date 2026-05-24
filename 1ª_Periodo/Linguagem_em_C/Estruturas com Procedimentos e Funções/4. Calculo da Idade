@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int idadecalc(int meunasc) {
+  int minhaidd = 2026 - meunasc;
+  return minhaidd;
+}
+
+int main() {
+  int ano, resultado;
+
+  printf("Diga seu ano que nasceu e descubra sua idade: ");
+  scanf("%i", &ano);
+
+  resultado = idadecalc(ano);
+
+  printf("Voce tem: %i anos\n", resultado);
+
+  return 0;
+}
