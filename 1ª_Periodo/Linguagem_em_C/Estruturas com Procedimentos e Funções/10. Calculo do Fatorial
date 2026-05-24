@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int fatorial(int numero) {
+  int resultado = 1;
+  int contador;
+
+  for (contador = 1; contador <= numero; contador++) {
+    resultado = resultado * contador;
+  }
+
+  return resultado;
+}
+
+int main() {
+  int num, resposta;
+
+  printf("Digite um numero e descubra seu fatorial: ");
+  scanf("%i", &num);
+
+  resposta = fatorial(num);
+
+  printf("O fatorial de %i e: %i\n", num, resposta);
+
+  return 0;
+}
