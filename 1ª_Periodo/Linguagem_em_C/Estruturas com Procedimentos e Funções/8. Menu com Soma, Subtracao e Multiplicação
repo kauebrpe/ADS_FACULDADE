@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int soma(int n1, int n2) {
+  return n1 + n2;
+}
+
+int subtracao(int n1, int n2) {
+  return n1 - n2;
+}
+
+int multiplicacao(int n1, int n2) {
+  return n1 * n2;
+}
+
+int main() {
+  int opcao;
+  int num1, num2;
+  int resultado;
+
+  do {
+
+    printf("\nMENU\n");
+    printf("1 - Soma\n");
+    printf("2 - Subtracao\n");
+    printf("3 - Multiplicacao\n");
+    printf("4 - Sair\n");
+    printf("Escolha uma opcao: ");
+    scanf("%i", &opcao);
+
+    if (opcao >= 1 && opcao <= 3) {
+
+      printf("Digite dois numeros: ");
+      scanf("%i %i", &num1, &num2);
+
+      if (opcao == 1) {
+        resultado = soma(num1, num2);
+      } else if (opcao == 2) {
+        resultado = subtracao(num1, num2);
+      } else if (opcao == 3) {
+        resultado = multiplicacao(num1, num2);
+      }
+
+      printf("Resultado: %i\n", resultado);
+
+    }
+
+  } while (opcao != 4);
+
+  printf("Programa encerrado.\n");
+
+  return 0;
+}
