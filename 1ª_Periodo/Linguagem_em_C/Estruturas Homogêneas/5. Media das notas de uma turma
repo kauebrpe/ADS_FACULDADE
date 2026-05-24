@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main () {
+  int p;
+  float v1[10];
+  float soma = 0;
+  float media = 0;
+ 
+  for (p=0; p<10; p++) {
+    printf("Digite a nota: ");
+    scanf("%f", &v1[p]);
+    soma = soma + v1[p];
+  }
+  media = soma / 10;
+  printf("A média é: %.2f", media);
+
+  return 0;
+}
