@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int mesesrest(int meumes) {
+  int mesfalta = 12 - meumes;
+  return mesfalta;
+}
+
+int main() {
+  int mes, resultado;
+
+  printf("Diga me seu mes atual (1 a 12): ");
+  scanf("%i", &mes);
+
+  resultado = mesesrest(mes);
+
+  printf("Os meses que faltam para o final do ano sao: %i\n", resultado);
+
+  return 0;
+}
