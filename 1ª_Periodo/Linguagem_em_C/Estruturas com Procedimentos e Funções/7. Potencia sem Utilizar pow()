@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int potencia(int numero, int expoente) {
+  int potenciafinal = 1;
+  int contador;
+
+  for (contador = 1; contador <= expoente; contador++) {
+    potenciafinal = potenciafinal * numero;
+  }
+
+  return potenciafinal;
+}
+
+int main() {
+  int num, exp, resultado;
+
+  printf("Digite um numero e seu expoente: ");
+  scanf("%i %i", &num, &exp);
+
+  resultado = potencia(num, exp);
+
+  printf("Resultado da potencia: %i\n", resultado);
+
+  return 0;
+}
