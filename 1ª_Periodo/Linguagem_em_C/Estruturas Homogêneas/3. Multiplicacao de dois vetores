@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main () {
+  int p;
+  float v1[20];
+  float v2[20];
+  float v3[20];
+
+  for (p=0; p<20; p++){
+    printf("Digite o valor %d: ", p);
+    scanf("%f", &v1[p]);
+  }
+
+  for (p=0; p<20; p++){
+    printf("Digite o valor %d: ", p);
+    scanf("%f", &v2[p]);
+  }
+
+  for (p=0; p<20; p++) {
+    v3[p] = v1[p] * v2[p];
+    printf("%.2f\n", v3[p]);
+  }
+  return 0;
+}
