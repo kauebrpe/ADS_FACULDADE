@@ -1,0 +1,18 @@
+#include <stdio.h>
+int main() {
+    int v[100];
+    int p;
+
+    for (p = 0; p < 100; p++) {
+        printf("Digite um numero: ");
+        scanf("%d", &v[p]);
+    }
+
+    printf("Ordem inversa:\n");
+
+    for (p = 99; p >= 0; p--) {
+        printf("%d ", v[p]);
+    }
+
+    return 0;
+}
