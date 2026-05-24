@@ -1,0 +1,25 @@
+#include <stdio.h>
+int main() {
+    int v[100];
+    int p, soma = 0, contador = 0;
+    float media;
+
+    for (p = 0; p < 100; p++) {
+        printf("Digite um numero: ");
+        scanf("%d", &v[p]);
+    }
+
+    for (p = 0; p < 100; p++) {
+        if (p % 2 == 0 && v[p] % 2 != 0) {
+            soma += v[p];
+            contador++;
+        }
+    }
+
+    if (contador > 0) {
+        media = (float)soma / contador;
+        printf("Media = %.2f", media);
+    }
+
+    return 0;
+}
