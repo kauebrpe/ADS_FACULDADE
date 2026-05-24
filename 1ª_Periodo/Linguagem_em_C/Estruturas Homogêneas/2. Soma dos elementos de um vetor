@@ -1,0 +1,12 @@
+#include <stdio.h>
+int main () {
+  int p;
+  int v[10];
+  int soma = 0;
+  for (p = 1; p <= 10; p++) {
+    printf("Digite um numero: ");
+    scanf("%i", &v[p]);
+    soma += v[p];
+  }
+  printf("A soma dos numeros digitados é: %i\n", soma);
+}
