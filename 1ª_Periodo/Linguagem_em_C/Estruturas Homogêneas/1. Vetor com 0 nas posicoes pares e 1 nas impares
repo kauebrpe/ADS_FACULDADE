@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main() {
+    int v[100];
+    int p;
+
+    for (p = 0; p < 100; p++) {
+        if (p % 2 == 0) {
+            v[p] = 0;
+        } else {
+            v[p] = 1;
+        }
+    }
+
+    for (p = 0; p < 100; p++) {
+        printf("%d ", v[p]);
+    }
+
+    return 0;
+}
