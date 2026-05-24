@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int menor(int n1, int n2, int n3) {
+  int menorvalor = n1;
+
+  if (n2 < menorvalor) {
+    menorvalor = n2;
+  }
+
+  if (n3 < menorvalor) {
+    menorvalor = n3;
+  }
+
+  return menorvalor;
+}
+
+int main() {
+  int num1, num2, num3, resultado;
+
+  printf("Digite tres numeros: ");
+  scanf("%i %i %i", &num1, &num2, &num3);
+
+  resultado = menor(num1, num2, num3);
+
+  printf("O menor numero e: %i\n", resultado);
+
+  return 0;
+}
