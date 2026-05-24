@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int restinho(int x1, int y2) {
+  int restinhocalc = x1 % y2;
+  return restinhocalc;
+}
+
+int main() {
+  int x, y, resultado;
+
+  printf("Digite dois numeros e descubra o resto entre eles: ");
+  scanf("%i %i", &x, &y);
+
+  resultado = restinho(x, y);
+
+  printf("Resto do primeiro pelo segundo deu: %i\n", resultado);
+
+  return 0;
+}
