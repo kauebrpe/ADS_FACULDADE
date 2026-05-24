@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int vogal(char letra) {
+
+  if (letra == 'a' || letra == 'e' || letra == 'i' ||
+      letra == 'o' || letra == 'u' ||
+      letra == 'A' || letra == 'E' || letra == 'I' ||
+      letra == 'O' || letra == 'U') {
+
+    return 1;
+
+  } else {
+
+    return 0;
+
+  }
+
+}
+
+int main() {
+  char letra;
+  int resultado;
+
+  printf("Digite uma letra e descubra se ela e vogal: ");
+  scanf(" %c", &letra);
+
+  resultado = vogal(letra);
+
+  if (resultado == 1) {
+    printf("%c e uma vogal\n", letra);
+  } else {
+    printf("%c nao e uma vogal\n", letra);
+  }
+
+  return 0;
+}
