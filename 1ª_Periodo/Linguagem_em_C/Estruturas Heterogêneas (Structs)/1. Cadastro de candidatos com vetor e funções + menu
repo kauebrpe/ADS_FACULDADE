@@ -1,0 +1,143 @@
+#include <stdio.h>
+
+typedef struct { // Criando uma "caixa"
+    int mat; // Matricula
+    char nome[50]; // Nome
+    float nota; // Nota
+} Tcandidato;
+
+// Funcao que cadastra os candidatos
+void cadastrarCandidatos(Tcandidato candidato[]) {
+
+    int p;
+
+    for (p = 0; p < 15; p++) {
+
+        printf("\nCandidato %d\n", p + 1);
+
+        printf("Matricula: ");
+        scanf("%d", &candidato[p].mat);
+
+        printf("Nome: ");
+        scanf("%s", candidato[p].nome);
+
+        printf("Nota: ");
+        scanf("%f", &candidato[p].nota);
+    }
+
+    printf("\nCandidatos cadastrados com sucesso!\n");
+}
+
+// Funcao que calcula a media de todos
+void calcularMedia(Tcandidato candidato[]) {
+
+    float soma = 0;
+    float media;
+    int p;
+
+    for (p = 0; p < 15; p++) {
+
+        soma = soma + candidato[p].nota;
+    }
+
+    media = soma / 15;
+
+    printf("\nMedia geral: %.2f\n", media);
+}
+
+// Funcao que obtem a maior e menor nota
+void maiorMenorNota(Tcandidato candidato[]) {
+
+    int maior = 0;
+    int menor = 0;
+    int p;
+
+    for (p = 1; p < 15; p++) {
+
+        if (candidato[p].nota > candidato[maior].nota) {
+
+            maior = p;
+        }
+
+        if (candidato[p].nota < candidato[menor].nota) {
+
+            menor = p;
+        }
+    }
+
+    printf("\nMaior nota:\n");
+    printf("%s - %.2f\n", candidato[maior].nome, candidato[maior].nota);
+
+    printf("\nMenor nota:\n");
+    printf("%s - %.2f\n", candidato[menor].nome, candidato[menor].nota);
+}
+
+// Funcao que busca uma matricula que o usuario digitar
+void buscarMatricula(Tcandidato candidato[]) {
+
+    int matricula;
+    int p;
+    int encontrado = 0;
+
+    printf("Digite a matricula: ");
+    scanf("%d", &matricula);
+
+    for (p = 0; p < 15; p++) {
+
+        if (candidato[p].mat == matricula) {
+
+            printf("\nNome: %s\n", candidato[p].nome);
+            printf("Nota: %.2f\n", candidato[p].nota);
+
+            encontrado = 1;
+        }
+    }
+
+    if (encontrado == 0) {
+
+        printf("Candidato nao encontrado!\n");
+    }
+}
+
+int main() {
+
+    Tcandidato candidato[15];
+
+    int opcao;
+
+    do {
+
+        printf("\nMENU\n");
+        printf("1 - Cadastrar candidatos\n");
+        printf("2 - Media geral\n");
+        printf("3 - Maior e menor nota\n");
+        printf("4 - Buscar matricula\n");
+        printf("0 - Sair\n");
+
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+
+            cadastrarCandidatos(candidato);
+        }
+
+        if (opcao == 2) {
+
+            calcularMedia(candidato);
+        }
+
+        if (opcao == 3) {
+
+            maiorMenorNota(candidato);
+        }
+
+        if (opcao == 4) {
+
+            buscarMatricula(candidato);
+        }
+
+    } while (opcao != 0);
+
+    return 0;
+}
