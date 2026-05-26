@@ -1,0 +1,155 @@
+#include <stdio.h>
+
+typedef struct {
+    int numero;
+    int cod_cliente;
+    char nome[50];
+    float saldo;
+} TConta;
+
+// Funcao que verifica se a conta ja existe:
+int contaExiste(TConta conta[], int total, int numero) {
+
+    int p;
+
+    for (p = 0; p < total; p++) {
+
+        if (conta[p].numero == numero) {
+
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+// Funcao que cadastra as contas:
+void cadastrarConta(TConta conta[], int *total) {
+
+    int numeroDigitado;
+
+    if (*total == 20) {
+
+        printf("Limite de contas atingido!\n");
+
+    } else {
+
+        printf("\nNumero da conta: ");
+        scanf("%d", &numeroDigitado);
+
+        if (contaExiste(conta, *total, numeroDigitado)) {
+
+            printf("Conta ja cadastrada!\n");
+
+        } else {
+
+            conta[*total].numero = numeroDigitado;
+
+            printf("Codigo do cliente: ");
+            scanf("%d", &conta[*total].cod_cliente);
+
+            printf("Nome do cliente: ");
+            scanf("%s", conta[*total].nome);
+
+            printf("Saldo: ");
+            scanf("%f", &conta[*total].saldo);
+
+            (*total)++;
+
+            printf("Conta cadastrada com sucesso!\n");
+        }
+    }
+}
+
+// Funcao que busca a conta do cliente:
+void buscarConta(TConta conta[], int total) {
+
+    int codigo;
+    int p;
+    int encontrou = 0;
+
+    printf("Digite o codigo do cliente: ");
+    scanf("%d", &codigo);
+
+    for (p = 0; p < total; p++) {
+
+        if (conta[p].cod_cliente == codigo) {
+
+            printf("\nConta: %d\n", conta[p].numero);
+            printf("Nome: %s\n", conta[p].nome);
+            printf("Saldo: %.2f\n", conta[p].saldo);
+
+            encontrou = 1;
+        }
+    }
+
+    if (encontrou == 0) {
+
+        printf("Cliente nao encontrado!\n");
+    }
+}
+
+// Funcao que mostra o menor saldo:
+void menorSaldo(TConta conta[], int total) {
+
+    int p;
+    int menor = 0;
+
+    if (total == 0) {
+
+        printf("Nenhuma conta cadastrada!\n");
+
+    } else {
+
+        for (p = 1; p < total; p++) {
+
+            if (conta[p].saldo < conta[menor].saldo) {
+
+                menor = p;
+            }
+        }
+
+        printf("\nConta com menor saldo:\n");
+        printf("Numero: %d\n", conta[menor].numero);
+        printf("Nome: %s\n", conta[menor].nome);
+        printf("Saldo: %.2f\n", conta[menor].saldo);
+    }
+}
+
+int main() {
+
+    TConta conta[20];
+
+    int opcao;
+    int total = 0;
+
+    do {
+
+        printf("\nMENU\n");
+        printf("1 - Cadastrar contas\n");
+        printf("2 - Visualizar contas do cliente\n");
+        printf("3 - Conta com menor saldo\n");
+        printf("0 - Sair\n");
+
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+
+            cadastrarConta(conta, &total);
+        }
+
+        if (opcao == 2) {
+
+            buscarConta(conta, total);
+        }
+
+        if (opcao == 3) {
+
+            menorSaldo(conta, total);
+        }
+
+    } while (opcao != 0);
+
+    return 0;
+}
