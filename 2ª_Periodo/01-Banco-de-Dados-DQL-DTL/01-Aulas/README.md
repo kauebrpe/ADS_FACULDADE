@@ -1,4 +1,4 @@
-👉 AULAS
+📚 AULAS
 
 Nesta pasta devem ser armazenados os conteúdos desenvolvidos durante as aulas.
 
