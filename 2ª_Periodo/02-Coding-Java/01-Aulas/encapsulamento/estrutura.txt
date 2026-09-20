@@ -1,0 +1,5 @@
+📁 encapsulamento
+├── 📄 ContaBancaria.java
+├── 📄 IdadePessoa.java
+├── 📄 Produto.java
+└── 📄 Aluno.java
