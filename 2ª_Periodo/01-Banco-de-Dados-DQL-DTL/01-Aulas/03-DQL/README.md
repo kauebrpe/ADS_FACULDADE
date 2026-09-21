@@ -200,7 +200,8 @@ AVG
 MIN
 MAX
 ```
-``
+
+---
 
 # Status do Bloco
 
