@@ -15,7 +15,7 @@ TCL
 ## Ementa Completa
 
 Bloco 1 — Fundamentos  
-Bloco 2 — DDL e DML
+Bloco 2 — DDL e DML  
 ...  
 Bloco 8 — Avançado
 
