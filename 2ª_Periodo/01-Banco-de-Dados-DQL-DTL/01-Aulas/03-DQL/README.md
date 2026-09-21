@@ -207,12 +207,12 @@ MAX
 
 | T*pico | Status |
 |---------|-------*-|
-| *9 SELECT e WHERE | ⬜ |
-| *0 IN, LIKE, BETWEEN, NULL | ⬜ |
-* *1 DISTINCT, AS, ORDER BY, LIMIT*| ⬜ |
-| *2 Funções Agregadas | ⬜ |
-| *3 GROUP BY e HAVING | ⬜ |
-| *4 Ordem do SELECT*| ⬜ |
+| *9 SELECT e WHERE | ⬜ |  
+| *0 IN, LIKE, BETWEEN, NULL | ⬜ |  
+* *1 DISTINCT, AS, ORDER BY, LIMIT*| ⬜ |  
+| *2 Funções Agregadas | ⬜ |  
+| *3 GROUP BY e HAVING | ⬜ |  
+| *4 Ordem do SELECT*| ⬜ |  
 | *5 Subconsultas | ⬜ |
 
 ---
