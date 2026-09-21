@@ -1,13 +1,25 @@
 # Banco de Dados com MySQL
 
-Repositorio de estudos organizado por blocos.
+## Objetivo
+
+Organizar todo o conteúdo da disciplina de Banco de Dados.
 
 ## SQL Commands
-- DDL
-- DML
-- DQL
-- DCL
-- TCL
 
-## Ementa
-1-36 topicos organizados nas pastas de aulas.
+DDL
+DML
+DQL
+DCL
+TCL
+
+## Ementa Completa
+
+Bloco 1 — Fundamentos
+Bloco 2 — DDL e DML
+...
+Bloco 8 — Avançado
+
+## Progresso
+
+| Tópico | Estudado | Revisado |
+``
