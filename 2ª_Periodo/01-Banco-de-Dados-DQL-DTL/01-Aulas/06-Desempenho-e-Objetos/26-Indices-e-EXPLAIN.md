@@ -1,0 +1,3 @@
+# Indices
+CREATE INDEX idx ON tabela(coluna);
+EXPLAIN SELECT ...

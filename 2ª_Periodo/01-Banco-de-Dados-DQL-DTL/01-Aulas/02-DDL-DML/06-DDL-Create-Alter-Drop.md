@@ -1,0 +1,4 @@
+# DDL
+CREATE DATABASE exemplo;
+ALTER TABLE exemplo;
+DROP TABLE exemplo;

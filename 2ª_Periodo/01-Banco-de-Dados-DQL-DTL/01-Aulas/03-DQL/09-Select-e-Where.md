@@ -1,0 +1,2 @@
+# SELECT e WHERE
+SELECT * FROM tabela WHERE id=1;

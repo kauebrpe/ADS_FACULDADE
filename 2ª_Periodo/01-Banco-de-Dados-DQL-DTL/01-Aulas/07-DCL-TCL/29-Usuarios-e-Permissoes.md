@@ -1,0 +1,2 @@
+# DCL
+GRANT e REVOKE.

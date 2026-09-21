@@ -1,0 +1,1 @@
+Fundamentos -> DDL/DML -> DQL -> Modelagem -> JOINs -> Performance -> DCL/TCL -> Avancado
