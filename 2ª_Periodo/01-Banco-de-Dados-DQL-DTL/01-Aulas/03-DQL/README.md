@@ -184,22 +184,23 @@ GROUP BY cidade;
 
 #*Comandos Mais Importantes
 
-```text*SELECT
+```text
+SELECT
 WHERE
 LIKE
-IN*BETWEEN
+IN
+BETWEEN
 GROUP BY
 HAVING
 ORDER BY
-L*MIT
+LIMIT
 COUNT
 SUM
 AVG
 MIN
 MAX
-``*
-
-*--
+```
+``
 
 # Status do Bloco
 
@@ -217,7 +218,6 @@ MAX
 
 * Próximo Bloco*
 Após finalizar o DQL:
-
-```text*04-Modelagem
+```text
+04-Modelagem
 ```
-*
