@@ -16,7 +16,7 @@ TCL
 
 Bloco 1 — Fundamentos  
 Bloco 2 — DDL e DML
-...
+...  
 Bloco 8 — Avançado
 
 ## Progresso
