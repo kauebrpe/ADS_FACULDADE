@@ -240,10 +240,10 @@ Escola
 ```
 
 Aluno → Matrícula → Disciplina
-```*
+
 Empresa
 
-```text*Funcionário → Departamento
+Funcionário → Departamento
 
 ```
 
