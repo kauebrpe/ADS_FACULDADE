@@ -12,86 +12,25 @@ Aprender técnicas avançadas de JOIN utilizando:
 
 ---
 
-# Quando um JOIN Simples Não é Suficiente?
+## JOIN com 3 ou Mais Tabelas
 
-Em bancos reais raramente trabalhamos apenas com duas tabelas.
+Em bancos reais raramente trabalhamos com apenas duas tabelas.
 
 Exemplo:
 
-Loja Virtual
-
-```text
 CLIENTES
+
 PEDIDOS
+
 ITENS_PEDIDO
+
 PRODUTOS
-```
 
-Para descobrir:
-
-```text
-Qual cliente comprou qual produto?
-```
-
-Precisamos utilizar vários JOINs.
+Para descobrir qual cliente comprou qual produto precisamos conectar todas essas tabelas.
 
 ---
 
-# JOIN com 3 ou Mais Tabelas
-
-## Estrutura
-
-```text
-CLIENTES
-    │
-PEDIDOS
-    │
-ITENS_PEDIDO
-    │
-PRODUTOS
-```
-
----
-
-# Exemplo
-
-Tabela CLIENTES
-
-| id_cliente | nome |
-|------------|------|
-| 1 | João |
-| 2 | Maria |
-
----
-
-Tabela PEDIDOS
-
-| id_pedido | id_cliente |
-|-----------|------------|
-| 101 | 1 |
-| 102 | 2 |
-
----
-
-Tabela PRODUTOS
-
-| id_produto | nome_produto |
-|------------|--------------|
-| 1 | Notebook |
-| 2 | Mouse |
-
----
-
-Tabela ITENS_PEDIDO
-
-| id_pedido | id_produto | quantidade |
-|-----------|------------|------------|
-| 101 | 1 | 1 |
-| 102 | 2 | 2 |
-
----
-
-# Consulta
+## Exemplo
 
 ```sql
 SELECT
@@ -110,18 +49,11 @@ INNER JOIN produtos pr
 
 ---
 
-# Resultado
+## Como Ler um JOIN Grande
 
-| Cliente | Pedido | Produto | Quantidade |
-|----------|---------|----------|-----------|
-| João | 101 | Notebook | 1 |
-| Maria | 102 | Mouse | 2 |
+Leia da esquerda para a direita.
 
----
-
-# Como Ler um JOIN Grande?
-
-Leia sempre da esquerda para a direita.
+Fluxo:
 
 ```text
 CLIENTES
@@ -133,106 +65,86 @@ ITENS_PEDIDO
 PRODUTOS
 ```
 
-Cada JOIN adiciona novas informações ao resultado.
+Cada JOIN adiciona informações ao resultado final.
 
 ---
 
-# JOIN com GROUP BY
+## JOIN com GROUP BY
 
-Um dos usos mais comuns.
+Um dos usos mais comuns dos JOINs.
 
 Serve para criar relatórios.
 
----
-
-# Quantidade de Pedidos por Cliente
+### Quantidade de pedidos por cliente
 
 ```sql
 SELECT
     c.nome,
-    COUNT(*) AS total_pedidos
-FROM *lientes c
-INNER JOIN pedidos p
-   *ON*c.id_cliente = p.id_cliente
+    COUNT(*) AS*total_pedidos
+FROM clientes c
+INNE* JOIN pedidos p
+    ON*c.id_cliente = p.id_cliente
 GROUP *Y c.nome;
-```
+``*
 
 ---
 
-# Resultado
+## JOIN com SUM
 
-|*Cliente*| Total de Pedidos |
-|----------|-*----------------|
-| João | 3 |
-| M*ria*| 2 |
+Valor*total*gasto por cliente.
 
----
-
-# JOIN com SUM()
-
-Cal*ular valor gasto por cliente.
-
-```*ql
-SELECT
-    c.nome,
-    SUM*p*valor_total) AS total_gasto
+```sql*SELECT
+*   c.nome,
+    SUM*p.valor_total) AS total_gasto
 FROM*clientes c
 INNER JOIN pedidos p
   * ON c.id_cliente = p.id_cliente
-GR*UP BY*c.nome;
+GR*UP BY c.nome;
 ```
 
 *--
 
-# JOIN com AVG()
+## JOIN com AVG
 
-Calcular*média salarial por*departamento.
+Média salaria* por departamento.
+
+```sql*SELECT
+    d.nome,
+    AVG*f.salario) AS media_salarial
+FROM*departamentos*d
+INNER JOIN funcionarios f
+    ON*d.id = f.departamento_id
+GROUP BY*d*nome;
+```
+
+*--
+
+## JOIN com MIN e MAX
+
+```sql
+*ELECT
+    d.nome,
+    MIN*f.salario) AS menor_salario,
+   *MAX(f.salario) AS maior_salario
+FR*M departamentos d
+INNER*JOIN funcionarios f
+    ON*d.id = f.departamento_id
+GROUP BY*d*nome;
+```
+
+*--
+
+## LEFT JOIN com Agregação
+
+Mu*to cobrado em provas.
+
+Objetivo:
+
+*ostrar todos os clientes,*inclusive os que não possuem pedid*s.
 
 ```sql
 SELECT
-    d*nome,
-    AVG*f.salario) AS media_s*larial
-FROM departamentos d
-INNER *OIN funcionarios f
-    ON d.id = f*departamento_id
-GROUP BY d.nome;
-`*`
-
----
-
-# JOIN com MIN() e MAX()
-
-*``sql
-SELECT
-    d.nome,
-    MIN*f*salario) AS menor_salario,
-   *MAX(f*salario) AS maior_salario
-*ROM departamentos d
-INNER JOIN fun*ionarios f
-    ON d.id = f.departa*ento_id
-GROUP BY d.nome;
-```
-
-*--
-
-# LEFT JOIN*com Agregação
-
-Esse tópico*cai bastante em provas.
-
----
-
-**Problema
-
-Listar*TODOS os clientes.
-
-Inclusive aque*es que*nunca fizeram pedidos*
-
----
-
-# Consulta
-
-```sql*SELECT
-    c.nome,
+   *c.nome,
     COUNT*p.id_pedido) AS total_pedidos
 FROM*clientes*c
 LEFT JOIN pedidos p
@@ -240,267 +152,171 @@ LEFT JOIN pedidos p
 GROUP *Y*c.nome;
 ```
 
----
+Resultado esperado:
 
-# Resultado
-
-| C*iente | Total de Pedidos |
-|------*---*------------------|
-| João | 3 |
-|*Maria*| 1 |
-| Pedro | 0 |
+* João →*3 pedidos*- Maria → 1 pedido
+- Pedro*→ 0 pedidos
 
 ---
 
-* Por Que Funciona?
+*# LEFT JOIN com*SUM
 
-O LEFT JOIN ma*tém todos os clientes.
-
-Mesmo sem *edido.
-
-O COUNT() retorna:
-
-*``text
-0
-```
-
-para clientes sem co*respondência.
-
----
-
-#*LEFT JOIN com*SUM()
-
-```sql
-SELECT
-   *c*nome,
-    SUM*p.valor_total) AS total_gasto
-FROM*clientes c
-LEFT JOIN pedidos p
-   *ON c.id_cliente = p.id_cliente
-GRO*P BY c.nome;
-```
-
-*--
-
-# Problema
-
-Clientes sem pedid*s podem retornar:
-
-```text
-NULL*```
-
-*--
-
-# Solução com COALESCE()
-
-```s*l
-SELECT
-   *c.nome,
-    CO*LESCE(SUM(p.valor*total), 0) AS total_gasto
-FROM cli*ntes c
-LEFT JOIN*pedidos p
-    ON c.id_cliente = p.*d_cliente
+```sql*SELECT
+    c.nome,
+    SUM*p.valor_total)*AS total_gasto
+FROM clientes c
+LEF* JOIN pedidos p
+    ON*c.id_cliente =*p.id_cliente
 GROUP BY c.nome;
+``*
+
+Problema:
+
+Clientes sem*pedidos podem retornar NULL.
+
+---
+**# Utilizando COALESCE
+
+```sql*SELECT
+*   c.nome,
+    CO*LESCE(SUM*p.valor_total), 0) AS total_gasto
+*ROM clientes c
+LEFT JOIN*pedidos p
+    ON*c.id_cliente = p.id_cliente
+GROUP *Y c.nome;
 ```
 
-*--
-
-# Resultado*
-| Cliente*| Total Gasto*|
-|----------|------------|
-| João*| 1500 |
-| Maria | 200 |
-| Pedro |*0 |
+* CO*LESCE substitui NULL por 0.
 
 ---
 
-* Relatório Gerencial Completo
+*# Relatório Gerencial
 
-```*ql
+*``sql
 SELECT
     c.nome,
-    COUNT*p.id_pedido* AS pedidos*
-    CO*LESCE(SUM(p.valor_total),0) AS fat*ramento
-FROM clientes c
-LEFT JOIN *edidos p
+   *COUNT(p.id_pedido) AS pedidos,
+*   CO*LESCE(SUM(p.valor_total), *) AS faturamento
+FROM clientes*c
+LEFT JOIN pedidos p
     ON*c.id_cliente = p.id_cliente
-GROUP *Y c.nome
-ORDER BY faturamento DESC*
-```
+*ROUP BY*c.nome
+ORDER BY faturamento DESC;
+*``
 
 ---
 
-# Exemplo Muito Cobrado*
-Top*produtos*mais vendidos.
+##*Exemplo Muito Cobrado
+
+*rodutos mais vendidos.
 
 ```sql
-SELECT
-    *r*nome_produto,
-    SUM*ip.quantidade) AS*total_vendido
-FROM produtos pr
-INN*R JOIN itens_pedido ip
-    ON*pr.id_produto = ip.id*produto
-GROUP BY pr.nome_produto
-O*DER BY total_vendido DESC;
+SEL*CT
+    pr.nome_produto,
+    SUM*ip.quantidade) AS total_vendido
+FR*M produtos*pr
+INNER JOIN itens_pedido ip
+    *N pr.id_produto =*ip.id_produto
+GROUP BY*pr.nome_produto
+*RDER BY total_vendido DESC;
 ```
 
 *--
 
-# Situações Reais
+## Situações Reais
 
-## Loja Vir*ual
+Lo*a Virtual
 
-Cliente →*Pedido → Item*→ Produto
+```text*Cliente → Pedido*→ Item → Produto
+```
 
----
+*scola
 
-## Escola
+```text*Aluno → Matrícula → Disciplina
+```*
+Empresa
 
-Aluno →*Matrícula → Disciplina
-
----
-
-## Em*resa
-
-Funcionário → Departamento
-
-*--
-
-* Boas Práticas
-
-✅ Utilizar aliases*
-
-```sql*c = clientes
-p = pedidos
-pr*= produtos
-ip =*itens_pedido
+```text*Funcionário → Departamento
 ```
 
 *--
 
-✅ Organizar um*JOIN por linha.
+## Boas Práticas
+
+- Util*zar aliases cur*os.
+- Ind*ntar os JOINs.
+- Organ*zar um JOIN por linha.
+- Test*r*o JOIN antes de*adicionar GROUP BY.
+- Util*zar LEFT JOIN quando não puder per*er registros.
 
 ---
 
-* Ind*ntar a cláusula ON.
+## Erros Comun*
+
+### Erro 1
+
+Esqu*cer*GROUP BY ao utilizar funções agreg*das.
+
+###*Erro 2
+
+Utilizar*INNER JOIN quando deveria utilizar*LEFT JOIN.
+
+### Erro 3
+
+Criar*JOINs*sem compreender o relacionamento d*s tabelas.
+
+### Er*o 4
+
+Não utilizar aliases em consu*tas grandes.
 
 ---
 
-* Test*r a consulta sem GROUP BY primeiro*
+## Resumo
+
+- JO*N pode envolver várias tabelas.
+- *ROUP BY combina muito com JOIN.
+- *OUNT conta registros.
+- SUM soma v*lores.
+-*AVG*calcula médias.
+- LEFT*JOIN mantém registros sem correspo*dência.
+- COALESCE substitui valor*s NULL.
 
 ---
 
-✅ Utilizar LEFT JOIN quando*não puder perder registros.
+## Cola para Prova
 
----
+* JOIN pode conectar 3 ou mais tabe*as.
+- GROUP BY funciona muito bem *om JOIN.
+- COUNT = quantidade.
+- S*M = soma.
+- AVG = média.
+- LEFT JO*N preserva registros sem correspon*ência.
+- COALESCE substitui NULL.
+*---
 
-* Erros Comuns
+## Questões de Revisão
 
-## Erro 1
+### 1* É possível utilizar JOIN com mais*de duas tabelas?
 
-Esquecer*o GROUP BY.
+Resposta: Sim.
 
----
+*## 2. Qual função é utilizada para*contar registros?
 
-*# Erro 2
+Resposta: COUNT*).
 
-Utilizar*INNER JOIN*quando deveria usar LEFT JOIN.
+### 3. Qual função é utilizada*para somar valores?
 
---*
+Resposta: SUM*).
 
-## Erro 3
+### 4. Qual JOIN mantém client*s sem pedidos?
 
-Fazer JOIN*sem entender os*relacionamentos.
+Resposta: LEFT JOI*.
 
----
+### 5. Para que serve COALESCE(*?
 
-*# Erro 4
+Resposta: Substituir NULL por o*tro valor.
 
-*ão utilizar aliases em consultas g*andes.
+### 6. Qual comando no*malmente aparece junto com JOIN em*relatórios?
 
----
-
-# Resumo
-
-- JOIN*pode conectar*várias tabelas
-- JOIN*funciona muito bem com GROUP BY
-- *OUNT() conta registros
-- SUM*) soma valores
-- AVG*) calcula médias
-- LEFT*JOIN preserva registros sem*correspondência
-- CO*LESCE() substitui*NULL
-
----
-
-# Tabela Resumo
-
-| Situ*ção | Solução |
-|-----------*----------|
-| Cliente*e Pedido | INNER JOIN |
-| Cliente*mesmo sem pedido | LEFT JOIN*|
-| Quant*dade por cliente | COUNT() + GROUP*BY |
-| Total gasto | SUM() + GROUP*BY |
-| Média salarial | AVG() +*GROUP BY |
-| Cliente*sem movimentação | LEFT JOIN |
-
---*
-
-# Cola para Prova
-
-- JOIN*pode envolver * ou mais tabelas
-- GROUP*BY combina muito com JOIN
-- COUNT*) = quantidade
-- SUM*) = soma
-* AVG() = média
--*LEFT*JOIN mantém todos os registros da*esquerda
-- CO*LESCE() substitui NULL por outro*valor
-
----
-
-* Questões de Revisão
-
-## 1. É poss*vel utilizar JOIN com mais de duas*tabelas?
-
-Resposta:
-
-Sim.
-
----
-
-*# 2. Qual função*normalmente é utilizada para conta* registros?
-
-Resposta:
-
-COUNT().
-
-*--
-
-## 3. Qual função*normalmente é utilizada para somar*valores?
-
-Resposta:
-
-SUM().
-
----
-
-*# 4. Qual JOIN*mantém clientes sem pedidos?
-
-Resp*sta:
-
-LEFT JOIN.
-
----
-
-*# 5. Para que*serve o*COALESCE()?
-
-Resposta:
-
-Substit*ir*valores NULL por outro valor.
-
-*--
-
-## 6. Qual comando normalmente*é utilizado para criar relatórios *pós um JOIN?
-
-Resposta:
-
-GROUP BY.*
+Resposta: GROUP BY.
+`*
