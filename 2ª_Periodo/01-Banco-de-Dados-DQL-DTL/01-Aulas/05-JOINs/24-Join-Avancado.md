@@ -224,43 +224,48 @@ GROUP BY*pr.nome_produto
 *RDER BY total_vendido DESC;
 ```
 
-*--
+---
 
 ## Situações Reais
 
-Lo*a Virtual
+Loja Virtual
 
-```text*Cliente → Pedido*→ Item → Produto
+```
+text*Cliente → Pedido*→ Item → Produto
+
 ```
 
-*scola
+Escola
 
-```text*Aluno → Matrícula → Disciplina
+```text
+
+Aluno → Matrícula → Disciplina
 ```*
 Empresa
 
 ```text*Funcionário → Departamento
+
 ```
 
 *--
 
 ## Boas Práticas
 
-- Util*zar aliases cur*os.
-- Ind*ntar os JOINs.
-- Organ*zar um JOIN por linha.
-- Test*r*o JOIN antes de*adicionar GROUP BY.
-- Util*zar LEFT JOIN quando não puder per*er registros.
+- Utilizar aliases curtos.
+- Indentar os JOINs.
+- Organazar um JOIN por linha.
+- Testar o JOIN antes de adicionar GROUP BY.
+- Utilazar LEFT JOIN quando não puder per*er registros.
 
 ---
 
-## Erros Comun*
+## Erros Comum
 
 ### Erro 1
 
-Esqu*cer*GROUP BY ao utilizar funções agreg*das.
+Esquecer *GROUP BY* ao utilizar funções agregradas.
 
-###*Erro 2
+###Erro 2
 
 Utilizar*INNER JOIN quando deveria utilizar*LEFT JOIN.
 
@@ -268,7 +273,7 @@ Utilizar*INNER JOIN quando deveria utilizar*LEFT JOIN.
 
 Criar*JOINs*sem compreender o relacionamento d*s tabelas.
 
-### Er*o 4
+### Erro 4
 
 Não utilizar aliases em consu*tas grandes.
 
@@ -276,10 +281,10 @@ Não utilizar aliases em consu*tas grandes.
 
 ## Resumo
 
-- JO*N pode envolver várias tabelas.
+- JOIN pode envolver várias tabelas.
 - *ROUP BY combina muito com JOIN.
 - *OUNT conta registros.
-- SUM soma v*lores.
+- SUM soma valores.
 -*AVG*calcula médias.
 - LEFT*JOIN mantém registros sem correspo*dência.
 - COALESCE substitui valor*s NULL.
@@ -293,17 +298,17 @@ Não utilizar aliases em consu*tas grandes.
 - COUNT = quantidade.
 - S*M = soma.
 - AVG = média.
-- LEFT JO*N preserva registros sem correspon*ência.
+- LEFT JOIN preserva registros sem correspon*ência.
 - COALESCE substitui NULL.
-*---
+---
 
-## Questões de Revisão
+### Questões de Revisão
 
-### 1* É possível utilizar JOIN com mais*de duas tabelas?
+### 1. É possível utilizar JOIN com mais*de duas tabelas?
 
 Resposta: Sim.
 
-*## 2. Qual função é utilizada para*contar registros?
+### 2. Qual função é utilizada para*contar registros?
 
 Resposta: COUNT*).
 
