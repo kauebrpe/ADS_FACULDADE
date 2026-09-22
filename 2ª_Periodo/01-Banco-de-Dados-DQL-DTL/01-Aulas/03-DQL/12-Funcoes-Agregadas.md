@@ -4,31 +4,27 @@
 
 Aprender a utilizar funções agregadas para realizar cálculos sobre conjuntos de registros.
 
-Estas funções são amplamente utilizadas em relatórios, dashboards e consultas gerenciais.
+Essas funções são muito utilizadas em relatórios, dashboards, análises e consultas gerenciais.
 
 ---
 
 # O que são Funções Agregadas?
 
-Funções agregadas realizam cálculos sobre várias linhas e retornam um único resultado.
+Funções agregadas realizam cálculos sobre várias linhas de uma tabela e retornam apenas um resultado.
 
 Principais funções:
 
-```text
-COUNT()
-SUM()
-AVG()
-MIN()
-MAX()
-```
+- COUNT()
+- SUM()
+- AVG()
+- MIN()
+- MAX()
 
 ---
 
 # COUNT()
 
 Conta registros.
-
----
 
 ## Sintaxe
 
@@ -39,36 +35,34 @@ FROM alunos;
 
 ---
 
-## Exemplo
+## Exempl*
 
 Tabela:
 
-| id | nome |
-|----|------|
+|*id | nome |
+|----*------|
 | 1 | João |
-| 2 | Maria |
+| * | Maria |
 | 3 | Pedro |
 
-Consulta:
+Consulta*
 
-```sql
+*``sql
 SELECT COUNT(*)
-FROM alunos;
+FROM alunos*
 ```
 
 Resultado:
 
 ```text
 3
-```
+``*
 
----
+*--
 
 # COUNT(*) x COUNT(coluna)
 
-Essa é uma pegadinha clássica de prova.
-
----
+Essa diferença costuma cair em provas.
 
 ## COUNT(*)
 
@@ -81,444 +75,440 @@ FROM funcionarios;
 
 ---
 
-##*COUNT(email)
+## *OUNT(coluna)
 
-Conta apenas valores*não nulos.
+Conta apenas valores*preenchidos.
+
+Valores NULL não são*contabilizados.
 
 ```sql
-SELECT COUNT(em*il)
+SELECT COU*T(email)
 FROM funcionarios;
 ```
 
----
+-*-
 
-#* Exemplo
-
-Tabela:
+## Exemplo
 
 | id | email |
-*----|-------|
-| 1 | abc@gmail.com *
-| 2 | NULL |
-| 3 | teste@gmail.co* |
-
----
+|---*|--------|
+| * | joao@gmail.com |
+* 2 | NULL |
+| * | maria@gmail.com |
 
 Consulta:
 
-```sql
-SELECT *OUNT(*)
-FROM funcionarios;
+*``sql
+SELECT COUNT(*)
+FROM funcion*rios*
 ```
 
-Re*ultado:
+*esultado:
 
 ```text
 3
-```
+``*
 
----
-
-Consu*ta:
-
-```sql
-SELECT COUNT(email)
-FR*M funcionarios;
-```
-
-Resultado:
-
-`*`text
-2
-```
-
----
-
-# COUNT(DISTINCT*
-
-Conta valores únicos.
-
----
-
-## E*emplo
-
-```sql
-SELECT COUNT(DISTINC* cidade)
-FROM clientes;
-```
-
----
-
-* SUM()
-
-Realiza a soma de valores.*
----
-
-## Exemplo
-
-Tabela:
-
-| produ*o | preco |
-|----------|--------|
-* A | 100 |
-| B | 200 |
-| C | 300 |*
 Consulta:
 
 ```sql
-SELECT SUM(prec*)
-FROM produtos;
+SELECT COUNT(e*ail)
+FROM funcionarios;
 ```
 
-Resultado:
+Resul*ado:
 
-*``text
-600
+```text*2
 ```
 
 ---
 
-# AVG()
+# COUNT(DISTINCT)
 
-Calc*la a média.
+Con*a*apenas valores*diferentes.
+
+## Exemplo
+
+```sql*SELECT COUNT(DISTINCT cidade)
+*ROM clientes;
+```
+
+---
+
+# SUM()
+
+R*al*za somas.
+
+## Sint*xe
+
+```sql*SELECT SUM(coluna)
+*ROM tabela;
+```
 
 ---
 
 ## Exemplo
 
-```s*l
-SELECT AVG(salario)
-FROM funcion*rios;
+* produto | preco |
+|----------|---*----|
+|*A | 100 |
+| B | 200 |
+| C | 300 |
+*Consulta:
+
+```*ql
+SELECT SUM(preco)
+FROM produtos*
 ```
-
----
-
-Tabela:
-
-| salario*|
-|----------|
-| 2000 |
-| 3000 |
-|*5000 |
 
 Resultado:
 
 ```text
-3333,3*
+600
+``*
+
+*--
+
+# AVG()
+
+Calcula a média.
+
+## *intaxe
+
+```sql
+SELECT AVG(coluna)
+*ROM tabela;
+```
+
+*--
+
+## Exemplo
+
+| salario |
+|-----*----*
+* 2000 |
+| 3000 |
+| 5000 |
+
+Consult*:
+
+```sql
+SELECT AVG(salario)
+FROM*funcionarios;
+```
+
+Resultado:
+
+```*ext*3333.33
 ```
 
 ---
 
 # MIN()
 
-Retorna o meno* valor.
+Retorna*o menor valor.
 
----
-
-## Exemplo
+##*Exemplo
 
 ```sql
-S*LECT MIN(preco)
-FROM produtos;
-```*
+SELECT MIN(preco)
+*ROM produtos;
+```
+
 Resultado:
 
-```text
+```*ext
 100
 ```
 
 ---
-*# MAX()
 
-Retorna o maior valor.
+# MAX()
 
--*-
+Retorna*o maior valor.
 
-## Exemplo
+##*Ex*mplo
 
 ```sql
-SELECT MAX(p*eco)
-FROM produtos;
+SELECT MAX(preco)
+FRO* produtos;
 ```
 
-Resultado*
+Resultado:
 
-```text
+```tex*
 300
 ```
 
 ---
 
-# Utilizan*o Alias
+# Utilizando Alias
+*Alias tornam*o resultado mais legível.
 
-Melhora a leitura dos res*ltados.
+## Exem*lo
 
----
-
-## Exemplo
-
-```sql
-S*LECT COUNT(*) AS total_alunos
-FROM*alunos;
+```sql*SELECT COUNT(*) AS total_alunos
+FR*M alunos;
 ```
 
 ---
 
 ## Exemplo
 
-```s*l
-SELECT AVG(salario) AS salario_m*dio
+``*sql
+SELECT AVG(salario) AS salario*medio
 FROM funcionarios;
 ```
 
 ---
-
-#*Várias Funções na Mesma Consulta
-
-*``sql
+*# Várias Funções na Mesma Consulta*
+```sql
 SELECT
-COUNT(*) AS total,
-SU*(salario) AS folha_pagamento,
-AVG(*alario) AS media,
-MIN(salario) AS *enor_salario,
-MAX(salario) AS maio*_salario
+    COUNT(*) AS tot*l,
+    SUM*salario) AS folha_pagamento,
+    A*G(salario) AS media,
+    MIN*salario) AS menor_salario,
+    MAX*salario) AS maior_sal*rio
 FROM funcionarios;
-```
-
--*-
-
-# Exemplo Prático
-
-Tabela:
-
-```*ext
-FUNCIONARIOS
-```
-
-| nome | sal*rio |
-|---------|---------|
-| João*| 2500 |
-| Maria | 3500 |
-| Pedro * 5000 |
-
----
-
-Consulta:
-
-```sql
-SE*ECT
-COUNT(*) AS total,
-SUM(salario* AS folha,
-AVG(salario) AS media,
-*IN(salario) AS menor,
-MAX(salario)*AS maior
-FROM funcionarios;
-```
-
--*-
-
-Resultado:
-
-```text
-Total: 3
-Fo*ha: 11000
-M*dia: 3666,67
-Menor* 2500
-*aior: 5000
 ```
 
 *--
 
-# Aplic*ções no Mundo Real
+# Exemplo Completo
 
-## RH
+Tabela:
 
-```sql*SELECT AVG(salario)
-FROM funcionar*os;
-```
+|*nome | salario |
+|---------|------*--|
+| João*| 2500 |
+| Maria*| 3500 |
+| Pedro | 5000 |
 
-*alário médio da empresa.
-
----
-
-## *stoque
-
-```sql*SELECT SUM(estoque)
-FROM produtos;*```
-
-Total de produtos.
-
----
-
-*# Clientes
+Consult*:
 
 ```sql
-SELECT COUNT(*)*FROM clientes;
-*``
+SELECT
+    COUNT**) AS total,
+    SUM(salario) AS folha,
+    AVG(*alario) AS media,
+    MIN(salario)*AS menor,
+    MAX(s*lario) AS maior
+FROM funcionarios;*```
 
-Quantidade cadastrada.
+Resultado:
+
+```text*Total: 3
+Folha: 11000
+M*dia: *666*67
+Menor* 2500
+Maior: 5000
+```
+
+*--
+
+# Aplicações Práticas
+
+## Quan**dade de Clientes
+
+```sql*SELECT COUNT(*)
+FROM clientes;
+```*
+*--
+
+## Salário Médio
+
+```sql*SELECT AVG(salario*
+FROM funcionarios;
+```
 
 ---
 
-#*Erros Comuns
+## F*lha de Pagamento
 
-## Erro 1
+```sql
+SELECT SU*(salario)
+FROM funcionarios;
+```
 
-Confundir*COUNT(*) com COUNT(coluna).
+*--
+
+## Produto Mais Caro
+
+```*ql
+SELECT MAX(preco)
+FROM produtos*
+```
 
 ---
 
-*# Erro 2
-
-Usar SUM em colunas de t*xto.
+## Produto Mais Barato
+*```sql
+SELECT MIN(preco)
+FROM prod*tos*
+```
 
 ---
+
+# Erros Comuns
+
+##*Erro 1
+
+Confundir*
+
+*``sql
+COUNT(*)
+```
+
+com
+
+```sql
+CO*NT(coluna)
+```
+
+---
+
+## Erro 2
+
+Ut*lizar SUM() em colunas de texto.
+
+*--
 
 ## Erro 3
 
-Esquecer ali*ses.
-
-Os resultados ficam difíceis*de entender.
+Esquecer alias em c*nsultas grandes.
 
 ---
 
 ## Erro 4
 
-Tent*r misturar agregações sem GROUP BY*
+*isturar agregações com outras colu*as sem GROUP BY.
 
-Esse*assunto será visto no próximo tópi*o.
-
----
-
-# Resumo
-
-##*COUNT()
-
-Conta registros*
+Esse assunto*será estudado no próximo tópico.
 
 *--
 
-## SUM()
+# Resumo
 
-Soma valores.
+## COUNT()
+
+Conta re*istros.
 
 ---
 
-*# AVG()
+## SUM()
+
+S*ma*valores.
+
+*--
+
+## AVG()
 
 Calcula média.
 
 ---
+*## MIN()
 
-## M*N()
+Retorna o menor valor.
 
-Menor valor.
-
----
+*--
 
 ## MAX()
 
-*aior valor.
+Retorna o maior valo*.
 
 ---
 
-# Cola para Prov*
+# Tabela Resumo
 
-```text
-COUNT = Contar
+| Função * Finalidade |
+|----------|--------*-|
+| COUNT*) | Contar |
+| SUM*) | Somar |
+| AVG() | Média |
+| MI*() | Menor valor |
+| MAX*) |*Maior valor |
 
-SUM =*Som*r
+---
 
-AVG = Média
+* Cola para Prova
 
-MIN =*Menor
+```text*COUNT =*Contar
+
+SUM = Somar
+
+AVG =*Média
+
+MIN = Menor
 
 MAX = Maior
 
-COUNT(*) = Todas as linhas
+C*UNT(*)*= Todas as linhas
 
 COUNT(col*na) = Ignora NULL
-*``
 
-*--
+*OUNT(D*STINCT) = Apenas valores únicos
+``*
 
-# Mapa Mental
-
-```text*Funções Agregadas
-│
-├── COUNT()
-│
-**─ SUM()
-│
-├──*AVG()
-│
-├── MIN()
-│
-└*─ MAX()
-```
-
-*--
+---
 
 # Questões de Revisão
 
-## 1
+## *
 
-Q*al função*conta registros?
+Qual função conta registros?
 
-Resposta:
+Re*posta:
 
-```sq*
+```sql
 COUNT()
 ```
 
 ---
 
-## 2
+#* 2
 
-Qual funç*o realiza somas?
+Qual função realiza somas?
 
-Resposta:
+Re*posta:
 
-```sq*
-SUM()
-``*
+```sql*SUM()
+```
 
 ---
 
 ## 3
 
-Qual função*calcula média?
+Qual*função calcula média?
 
 Resposta:
 
-```sql*AVG()
+*``sql
+AVG()
 ```
 
 ---
 
 ## 4
 
-Qual função*retorna o menor*valor?
+Qual f*nção*retorna o menor valor?
 
 Resposta:
-
-```sql
+*```sql
 MIN()
-``*
+```
 
----
+*--
 
 ## 5
 
-Qual função retorna o*maior valor?
+Qual função*retorna o maior valor?
 
 Resposta:
-
-```sql
-MA*()
+*```sql
+MAX()
 ```
 
----
+*--
 
 ## 6
 
@@ -528,5 +518,16 @@ Resposta:
 
 COUNT(*) conta todas as linhas.
 
-COUNT(co*una) ignora valores NULL.
-````*
+COUNT(co**na) ignora*valores NULL.
+
+---
+
+## 7
+
+Qual fun*ão conta somente valores diferente*?
+
+Resposta:
+
+```sql*COUNT(DISTINCT coluna)
+```
+*
