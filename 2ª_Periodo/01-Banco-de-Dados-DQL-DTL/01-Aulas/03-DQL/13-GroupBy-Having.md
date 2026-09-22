@@ -2,9 +2,9 @@
 
 ## Objetivo
 
-Aprender a agrupar registros utilizando o GROUP BY e filtrar grupos utilizando o HAVING.
+Aprender a agrupar registros utilizando o comando GROUP BY e filtrar grupos utilizando o comando HAVING.
 
-Esses comandos são fundamentais para relatórios, estatísticas e análises de dados.
+Esses comandos são muito utilizados em relatórios, estatísticas e análises de dados.
 
 ---
 
@@ -22,22 +22,23 @@ Após o agrupamento, podemos utilizar funções agregadas como:
 
 ---
 
-# Sintaxe
+# Sintaxe Básica
 
 ```sql
-SELECT coluna, funcao_agregada()
+SELECT coluna,
+       funcao_agregada()
 FROM tabela
 GROUP BY coluna;
 ```
 
 ---
 
-# Exemplo Básico
+# Exemplo Simples
 
 Tabela:
 
 | departamento |
-|------------|
+|-------------|
 | TI |
 | TI |
 | RH |
@@ -62,119 +63,120 @@ Resultado:
 
 ---
 
-* Utilizando COUNT()
+* GROUP BY com COUNT()
 
-```sql*SELECT departamento,
-*      COUNT(*) AS quantidade
-FROM *uncionarios
-GROUP BY departamento;*```
+```*ql*SELECT departamento,
+       COUNT**) AS quantidade
+FROM funcionarios*GROUP BY departamento;
+```
 
 ---
 
-# Utilizando AVG()
+* GROUP BY com AVG*)
 
-```s*l
+```sql
 SELECT departamento,
-       AVG*salario) AS media_salarial
-FROM*funcionarios
-GROUP BY departamento*
+   *   AVG(salario) AS media_salarial
+*ROM funcionarios
+GROUP BY departam*nto;
 ```
 
 *--
 
-# Utilizando SUM()
+# GROUP BY com SUM()
 
 ```sql*SELECT departamento,
-       SUM*salario) AS folha_pagamento*FROM funcionarios
-GROUP BY departa*ento;
+       SUM*salario) AS folha_pag*mento
+FROM funcionarios
+GROUP BY d*partamento;
 ```
 
 ---
 
-# Utilizando MIN*) e MAX()
+# GROUP BY c*m MIN() e MAX()
 
-```sql*SELECT departamento,
-*      MIN*salario) AS menor_salario,
+```sql
+SELECT dep*rtamento,
+       MIN*salario) AS menor_salario,
        *AX(salario) AS maior_salario
-FROM *uncionarios
-GROUP BY departamento;*```
+FROM*funcionarios*GROUP BY departamento;
+```
 
----
+*--
 
 # Exemplo Completo
 
-Tabe*a:
+Tabela:
 
-| nome | departamento | salari* |
-|--------*-------------|---------|
+|*nome | departamento | salario |
+|-*----*-------------|---------|
 | João*| TI | 3000 |
-| Maria*| TI | 4000 |
-| Pedro*| RH | 2500 |
-* Ana*| RH | 3500 |
+| Maria | TI | 4000 *
+|*Pedro | RH | 2500 |
+| Ana*| RH | 3500 |
 
 Consulta:
 
 ```*ql
 SELECT departamento,
-       COU*T(*) AS total,
+       COU*T**) AS total,
        AVG*salario) AS media
 FROM funcionario*
-GROUP BY*departamento;
+GROUP BY departamento;
 ```
 
-Resultado:
+Resul*ado:
 
-| d*partamento | total | media |
-|----*--------|--------|---------|
-| TI * * | 3500 |
-| RH | 2 | 3000 |
-
----
-
-**Regra de Ouro do GROUP BY
-
-Toda co*una que aparece no SELECT e não es*á dentro de uma função agregada de*e aparecer no GROUP BY.
+| departamento*| total | media |
+|-------------|-*-----|-------|
+| TI | 2 | 3500 |
+|*RH*| 2 | 3000 |
 
 ---
 
-*# Errado
+* Regra de Ouro do GROUP BY
 
-```sql*SELECT departamento,
-       nome,
-*      COUNT(*)
-FROM funcionarios
-G*OUP BY departamento;
+Toda c*luna*que aparece*no SELECT e não está dentro de uma*função agregada deve aparecer no G*OUP BY.
+
+---
+
+## Exemplo Incorreto*
+```sql
+SELECT departamento,
+     * nome,
+       COUNT(*)
+FROM funcio*arios
+GROUP BY departamento;
 ```
 
 *--
 
-## Correto
+## Exemplo Correto
 
 ```sql
-SELECT depa*tamento,
+SEL*CT departamento,
        COUNT(*)
-FROM func*onarios
-GROUP BY departamento;
-``*
+F*OM funcionarios
+GROUP*BY departamento;
+```
 
----
+*--
 
 # O que é HAVING?
 
-HAVING*é utilizado para filtrar grupos cr*ados pelo GROUP BY.
+O HAV*NG é utilizado para filtrar grupos*criados pelo GROUP BY.
 
-É semelhante*ao WHERE* porém trabalha*após o agrupamento.
+Func*ona de*forma semelhante ao WHERE, mas*atua após o agrupamento.
 
----
+*--
 
 # Sintaxe
 
-```sql
-SELECT coluna,
+```sql*SELECT coluna,
        COUNT(*)
 FROM tabela
 GROUP BY coluna
-HAVING condição;
+HAVING condicao;
 ```
 
 ---
@@ -186,22 +188,16 @@ SELECT departamento,
        COUNT(*) AS total
 FROM funcionarios
 GROUP*BY departamento
-HAVING COUNT(*) > 2;
+HAVING*COUNT(*) > 2;
 ```
-
----
 
 Resultado:
 
-Somente departamentos com mais de 2 funcionários.
+Mostra apenas os departamentos que possuem mais de 2 funcionários.
 
 ---
 
-# WHERE x HAVING
-
-Essa diferença costuma cair em prova.
-
----
+# Diferença Entre WHERE e HAVING
 
 ## WHERE
 
@@ -217,7 +213,7 @@ WHERE salario > 3000;
 
 ## HAVING
 
-Filtra grupos depois do agrupamento.
+Filtra grupos após o agrupamento.
 
 ```sql
 SELECT departamento,
@@ -229,21 +225,15 @@ HAVING AVG(salario) > 3000;
 
 ---
 
-# Fluxo de Execução
+# Ordem de Execução
 
 ```text
 FROM
-↓
 WHERE
-↓
 GROUP BY
-↓
 HAVING
-↓
 SELECT
-↓
 ORDER BY
-↓
 LIMIT
 ```
 
@@ -260,187 +250,156 @@ GROUP BY departamento
 HAVING AVG(salario) > 3000;
 ```
 
----
+O que acontece:
 
-## O que acontece?
-
-1. WHERE remove salários menores que 2000.
+1. WHERE filtra os registros.
 2. GROUP BY cria os grupos.
 3. AVG calcula a média.
 4. HAVING filtra os grupos.
-5. Resultado é exibido.
+5. O resultado é exibido.
 
 ---
 
-# Exemplo de Relatório
+# Relatório de Clientes por Cidade
 
 ```sql
 SELECT cidade,
        COUNT(*) AS total_clientes
-FROM clientes
-*ROUP BY cidade;
+FROM clientes*GROUP BY cidade;
 ```
 
----
+Resultado:
 
-Resultad*:
-
-| cidade | total_clientes |
-|--*------|---------|
+* cidade*| total_clientes |
+|---------|----*----------|
 | Recife | 10 |
-* Ol*nda | 6 |
+| Ol*nda | 6 |
 | Car*aru | 4 |
 
----
+*--
 
-* Exemplo com Soma
+# Relatório de Faturamento
 
-```sql
-SELECT c*tegoria,
-       SUM*valor) AS faturamento
-FROM vendas*GROUP BY*categoria;
-*``
-
----
-
-# Exemplo com Média
-
-```s*l
-SELECT departamento,
-       AVG*salario) AS media_salarial
-FROM fu*cionarios
-GROUP BY*departamento;
+``*sql
+SELECT categoria,
+      *SUM(valor) AS faturamento
+FROM ven*as
+GROUP BY*categoria;
 ```
 
 *--
 
+# Relatório de Salário Médio
+
+*``sql
+SELECT departamento,
+       *VG(salario) AS media_salarial
+FROM*funcionarios
+GROUP BY departamento*
+```
+
+---
+
 # Erros Comuns
 
-*# Erro 1
+## Er*o 1
 
-Esqu*cer o GROUP BY.
+*squecer o GROUP BY.
 
 ---
 
 *# Erro 2
 
-Util*zar*HAV*NG sem agrupamento.
+Usar*HAVING para*filtrar registros comuns.
+
+Nesses*casos utilize WHERE.
 
 ---
 
-## Erro *
+## Erro*3
 
-Misturar*colunas com*funções agregadas de forma incorre*a.
+Misturar col*nas e agreg*ções sem respeitar a*regra do GROUP BY.
 
 ---
 
-## Erro 4
+*# Erro 4
 
-Util*zar*WHERE para filtrar agregações.
+Tentar*utilizar*funções agregadas dentro*do WHERE.
 
---*
+Incorreto:
 
-## Errado
-
-```sql
-SELECT departa*ento,
+```sql*SELECT departamento,
        COUNT(*)
-FROM funcion*rios
-GROUP BY departamento
-WHERE C*UNT(*) > 2;
+FROM funcionarios
+WHERE COUNT(*)*> 2
+GROUP BY*departamento;
 ```
 
-*--
+Correto:
 
-## Correto
-
-```sql
-SELECT depa*tamento,
+```sq*
+SELECT departamento,
        COUNT(*)
 FROM funcionarios
 GROUP BY departamento
 HAVING COUNT(*) > 2;
 ```
 
-*--
+---
 
 # Resumo
 
-## GROUP BY
+*# GROUP BY
 
-Agrupa*registros.
+Agrupa registros.
+
+---*
+*# HAVING
+
+Filtra grupos.
 
 ---
 
-## HAVING
+## *HERE
 
-Filtra*grupos.
-
----
-
-## WHERE
-
-Filtra reg*stros.
+Filtra registros.
 
 ---
 
 * Tabela Comparativa
 
-| Com*ndo | Trabalha com |
-|----------**---------|
-| WHERE | Registros |
-|*GROUP BY | Grupos |
-| HAV*NG | Grupos |
-
----
-
-# Cola para Pr*va
-
-```*ext
-GROUP BY
-→ Agr*par
-
-HAVING
-→ Filtrar grupos
-
-WHER**→ Filtrar registros
-
-WHERE*ocorre*antes do GROUP BY
-
-HAVING ocorre d*pois do GROUP BY
-```
-
----
-
-# Mapa *ental
-
-```text
-SELECT
-│
-├── WHERE
-*
-├── GROUP BY
-│
-├──*HAVING
-│*├── ORDER BY
-│*└── LIMIT
-```
+* Com*ndo | Atua Sobre |
+|----------*------------|
+| WHERE | Registros *
+| GROUP BY | Grupos |
+| HAV*NG | Grupos*|
 
 *--
 
-#*Questões de Revisão*
-## 1
+# Cola para Prova
 
-Para que serve o GROUP BY?
-*Resposta:
+```text
+GRO*P BY = Agrupar
 
-Agrupar registros com v*lores iguais.
+HAVING = Filtrar g*upos
+
+WHERE = Filtrar registros*
+WHERE acontece antes do GROUP BY
+*HAVING acontece depois do GROUP BY*```
+
+*--
+
+# Questões de Revisão
+
+## *. Para que*serve o GROUP BY?
+
+Resposta:
+
+Agru*ar registros que possuem valores i*uais.
 
 ---
 
-## 2
-
-Para que*serve o HAVING?
+## 2. Para que*serve o HAVING?
 
 Resposta:
 
@@ -448,33 +407,27 @@ Filtra* grupos após o agrupamento.
 
 ---
 
-*# 3
+*# 3. Qual a*diferença entre WHERE e HAVING?
 
-Qual a diferença entre WHERE * HAVING?
+R*sposta:
 
-Resposta:
+WHERE filtra registros.
 
-WHERE filtra *egistros.
+*AVING filtra grupos.
 
-HAVING filtra grupos.
+---
 
-*--
-
-## 4
-
-Qual comando vem primeir* na execução?
+## 4. Q*al comando*é executado primeiro?
 
 Resposta:
 
-WHERE.
+*HERE.
 
-*--
+---
 
-## 5
+## 5. Como descobrir q*antos funcionários existem em cada*departamento?
 
-Qual comando é utilizado*para saber quantos funcionários ex*stem em cada departamento?
+Resposta:
 
-Respos*a:
-
-GROUP BY com COUNT().
+Utilizan*o GROUP BY com COUNT().
 ````*
