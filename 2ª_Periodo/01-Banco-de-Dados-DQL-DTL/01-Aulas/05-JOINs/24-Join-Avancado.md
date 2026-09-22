@@ -237,7 +237,7 @@ text*Cliente → Pedido*→ Item → Produto
 
 Escola
 
-```text
+```
 
 Aluno → Matrícula → Disciplina
 ```*
@@ -247,7 +247,7 @@ Empresa
 
 ```
 
-*--
+---
 
 ## Boas Práticas
 
