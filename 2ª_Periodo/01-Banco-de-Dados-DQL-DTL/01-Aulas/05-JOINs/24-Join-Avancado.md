@@ -106,10 +106,11 @@ GR*UP BY c.nome;
 
 ## JOIN com AVG
 
-Média salaria* por departamento.
+Média salaria por departamento.
 
-```sql*SELECT
-    d.nome,
+```sql
+*SELECT
+d.nome,
     AVG*f.salario) AS media_salarial
 FROM*departamentos*d
 INNER JOIN funcionarios f
@@ -122,7 +123,7 @@ GROUP BY*d*nome;
 ## JOIN com MIN e MAX
 
 ```sql
-*ELECT
+*SELECT
     d.nome,
     MIN*f.salario) AS menor_salario,
    *MAX(f.salario) AS maior_salario
@@ -140,7 +141,7 @@ Mu*to cobrado em provas.
 
 Objetivo:
 
-*ostrar todos os clientes,*inclusive os que não possuem pedid*s.
+*Mostrar todos os clientes, inclusive os que não possuem pedidos.
 
 ```sql
 SELECT
@@ -154,21 +155,22 @@ GROUP *Y*c.nome;
 
 Resultado esperado:
 
-* João →*3 pedidos*- Maria → 1 pedido
-- Pedro*→ 0 pedidos
+* João →3 pedidos- Maria → 1 pedido
+- Pedro→ 0 pedidos
 
 ---
 
-*# LEFT JOIN com*SUM
+*# LEFT JOIN com *SUM
 
-```sql*SELECT
+```sql
+*SELECT
     c.nome,
     SUM*p.valor_total)*AS total_gasto
 FROM clientes c
 LEF* JOIN pedidos p
     ON*c.id_cliente =*p.id_cliente
 GROUP BY c.nome;
-``*
+```
 
 Problema:
 
@@ -177,7 +179,8 @@ Clientes sem*pedidos podem retornar NULL.
 ---
 **# Utilizando COALESCE
 
-```sql*SELECT
+```sql
+*SELECT
 *   c.nome,
     CO*LESCE(SUM*p.valor_total), 0) AS total_gasto
 *ROM clientes c
@@ -192,7 +195,7 @@ GROUP *Y c.nome;
 
 *# Relatório Gerencial
 
-*``sql
+```sql
 SELECT
     c.nome,
    *COUNT(p.id_pedido) AS pedidos,
@@ -202,13 +205,13 @@ LEFT JOIN pedidos p
     ON*c.id_cliente = p.id_cliente
 *ROUP BY*c.nome
 ORDER BY faturamento DESC;
-*``
+```
 
 ---
 
 ##*Exemplo Muito Cobrado
 
-*rodutos mais vendidos.
+*Produtos mais vendidos.
 
 ```sql
 SEL*CT
