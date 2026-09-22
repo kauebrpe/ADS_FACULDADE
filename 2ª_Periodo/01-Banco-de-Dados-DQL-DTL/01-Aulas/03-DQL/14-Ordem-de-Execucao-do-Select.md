@@ -2,37 +2,35 @@
 
 ## Objetivo
 
-Compreender a ordem lógica de execução de uma consulta SQL.
+Entender a ordem lógica de execução de uma consulta SQL.
 
-Embora o comando SELECT seja escrito de uma forma, o SGBD executa suas cláusulas em outra ordem.
+Embora escrevamos o comando SELECT primeiro, o banco de dados executa as cláusulas em outra ordem.
 
-Entender essa sequência ajuda a evitar erros e facilita o aprendizado de GROUP BY, HAVING e Subconsultas.
+Essa é uma das matérias que mais ajudam a entender erros envolvendo WHERE, GROUP BY e HAVING.
 
 ---
 
-# Como Escrevemos uma Consulta?
+# Como Escrevemos uma Consulta
 
 Normalmente escrevemos:
 
 ```sql
-SELECT coluna
-FROM tabela
-WHERE condição
-GROUP BY coluna
-HAVING condição
-ORDER BY coluna
-LIMIT 10;
+SELECT departamento,
+       COUNT(*)
+FROM funcionarios
+WHERE salario*> 2000
+GROUP BY departamento
+HAVIN**COUNT(*) > 2
+ORDER BY departamento
+LIMIT 5;
 ```
 
 ---
 
-# Como o Banco Executa?
-
-O SGBD não executa na ordem em que escrevemos.
+# Como o Banco Executa
 
 A ordem lógica de execução é:
 
-```text
 1. FROM
 2. WHERE
 3. GROUP BY
@@ -40,33 +38,12 @@ A ordem lógica de execução é:
 5. SELECT
 6. ORDER BY
 7. LIMIT
-```
-
----
-
-# Ordem Completa
-
-```text
-FROM
-↓
-WHERE
-↓
-GROUP BY
-↓
-HAVING
-↓
-SELECT
-↓
-ORDER BY
-↓
-LIMIT
-```
 
 ---
 
 # 1. FROM
 
-Primeiro o banco determina de onde os dados serão obtidos.
+Primeiro o banco identifica a origem dos dados.
 
 Exemplo:
 
@@ -74,27 +51,27 @@ Exemplo:
 FROM funcionarios
 ```
 
-O SGBD localiza a tabela.
+Nesta etapa o SGBD localiza a tabela.
 
 ---
 
 # 2. WHERE
 
-Depois são aplicados os filtros.
+Após localizar os dados, o banco aplica os filtros.
 
 Exemplo:
 
 ```sql
-WHERE salario > 3000
+WHERE salario > 2000
 ```
 
-Somente os registros que atendem à condição permanecem.
+Somente os registros que atendem à condição continuam na consulta.
 
 ---
 
 # 3. GROUP BY
 
-Os registros restantes são agrupados.
+Depois os registros são agrupados.
 
 Exemplo:
 
@@ -102,364 +79,365 @@ Exemplo:
 GROUP BY departamento
 ```
 
-Os funcionários passam a ser agrupados por departamento.
+Agora os funcionários passam a ser organizados em grupos por departamento.
 
 ---
 
 # 4. HAVING
 
-O HAVING filtra os grupos criados pelo GROUP BY.
+Após o agrupamento, o HAVING filtra os grupos.
 
 Exemplo:
 
 ```sql
-HAVING COUNT(*) > 5
+HAVING COUNT(*) > 2
 ```
 
-Mant*m apenas grupos com mais de 5 regi*tros.
+Somente grupos com mais*de dois registros permanecem.
+
+---*
+# 5. SELECT
+
+Somente agora as col*nas são escolhidas.
+
+Exemplo:
+
+```*ql
+SELECT departamento,
+       COU*T(*)
+```
+
+O resultado começa a ser*montado.
 
 ---
 
-# 5. SELECT
-
-Somente*agora*as colunas são*selecionadas.
-
-*xemplo:
-
-```sql*SELECT departamento,
-       COUNT(*)
-```
-
-O*banco monta o resultado final.
-
---*
-
 # 6. ORDER BY
 
-Em*seguida, o resultado é ordenado.
+O*resultado é*ordenado.
 
-*xemplo*
+Exemplo:
 
 ```sql*ORDER BY departamento
 ```
 
----
+*u
 
-# *. LIMIT
-
-*or último,*limita a quantidade de linhas reto*nadas.
-
-Exemplo:
-
-```sql*LIMIT 10
-```
+```sql
+ORDER BY salario DESC
+``*
 
 *--
 
-# Exemplo Completo
+# 7. LIMIT
 
-Consulta:
-*```sql
-SELECT departamento,
-       COUNT(*) AS total
-FROM funcionarios
-WHERE salario > 2000
-GROUP BY departamento
-HAVING COUNT(*) > 2
-ORDER BY total DESC
-LIMIT 5;
+Por último**o banco limita a quantidade de lin*as retornadas.
+
+Exemplo:
+
+```sql
+L*MIT 10
 ```
 
 ---
 
-# O que acontece internamente?
+# Ex*mplo Completo
 
-## Etapa 1
+Consulta:
 
+```sql
+S*LECT departamento,
+       COUNT(*)*AS total
+FROM funcionarios
+WHERE s*lario > 2000
+GROUP BY departamento*HAVING*COUNT(*) > 2
+ORDER BY total DESC
+L*MIT 5;
+```
+
+---
+
+# O que Acontece *nternamente?
+
+## Et*pa 1*
 ```sql
 FROM funcionarios
 ```
 
-Seleciona a tabela.
+Bus*a os dados.
 
 ---
 
 ## Etapa 2
 
-```sql
+```s*l
 WHERE salario > 2000
 ```
 
-Remove quem recebe menos de 2000.
+Remove*registros indesejados.
 
 ---
 
-## Etapa 3
+## Et*pa 3
 
 ```sql
-GROUP BY departamento
-```
+GROUP BY departamento*```
 
-Agrupa por departamento.
+Cria os grupos.
 
 ---
 
-## Etapa 4
+## Etap* 4
 
 ```sql
 HAVING COUNT(*) > 2
-```
-
-*antém apenas*grupos com mais de 2 pessoas.
-
----*
-## Etapa 5
-
-```sql
-SELECT departa*ento,
-       COUNT(*)
-```
-
-*efine as*colunas exibidas.
+```*
+Filtra os grupos.
 
 ---
 
-*# Etapa *
+## Etapa *
 
 ```sql
-ORDER BY total DESC
+SELECT departamento,
+    *  COUNT(*)
 ```
 
-*rdena do maior para o menor.
+Define as colunas *xibidas.
 
 ---
-*## Etapa 7
+
+## Etapa 6
+
+```sql
+*RDER BY total DESC
+```
+
+Ordena o r*sultado.
+
+---
+
+## Etapa 7
 
 ```sql
 *IMIT 5
 ```
 
-*x*be somente os 5 primeiros registro*.
+Exibe apenas os cinco *rimeiros registros.
 
 ---
 
-* Por que Isso é Importante?
+# Por Qu* Isso é Importante?
 
-Com*reender*a ordem de execução explica vários*erros comuns.
+Quando entend*mos essa ordem, fica fácil descobr*r por que algumas consultas geram *rro.
 
 ---
 
-# Exemplo de E*ro
-
-Tentativa:
-
-```sql*SELECT departamento,
-       COUNT(*)
-FROM funcionarios
-WHERE COUNT(*) > 2
-GROUP BY*departamento;
-```
-
-*--
-
-# Por que Está Errado?
-
-Porque*o WHERE é executado antes do GROUP*BY.
-
-Nesse momento:
-
-```text*COUNT(*) ainda não existe.
-```
-
-*--
-
-# Forma Correta
+# Exemplo de Erro Comum*
+Consulta incorreta:
 
 ```sql
-SELECT*departamento,
-      *COUNT(*)
-FROM funcionarios
-GROUP B* departamento
-HAVING COUNT(*) > 2;*```
-
-*--
-
-# Regra para*Provas*
-Memorize:
-
-```text*WHERE filtra registros
-
-HAVING*filtra grupos
+SELEC* departamento,
+       COUNT(*)
+FRO* funcionarios
+WHERE COUNT(*) > 2
+G*OUP BY departamento;
 ```
-
-*--
-
-# Outro Exemplo
-
-*onsulta:
-
-```sql*SELECT *
-FROM alunos
-WHERE idade*>= 18
-ORDER BY*nome
-*IMIT 10;
-```
-
-*--
-
-# Execução
-
-```text*FROM*alunos
-↓
-WHERE idade*>= 18
-↓
-SELECT *
-↓*ORDER BY nome
-↓
-LIMIT *0
-```
-
-*--
-
-# Erros Comuns
-
-## Er*o 1
-
-Achar*que SELECT*é executado primeiro.
-
-Não*é.
 
 ---
+
+# P*r Que Está Errada?
+
+Porque o WHERE*é executado antes do GROUP BY.
+
+Ne*se momento:
+
+```sql
+COUNT(*)
+```
+
+*inda não existe.
+
+---
+
+# Forma Cor*eta
+
+```sql
+SELECT departamento,
+ *     COUNT(*)
+FROM funcionarios
+GR*UP BY departamento
+HAVING COUNT(*)*> 2;
+```
+
+---
+
+# WHERE x HAVING
+
+#* WHERE
+
+Filtra registros.
+
+Exemplo*
+
+```sql
+SELECT *
+FROM funcionario*
+WHERE salario > 3000;
+```
+
+---
+
+#* HAVING
+
+Filtra grupos.
+
+Exemplo:
+*```sql
+SELECT departamento,
+      *AVG(salario)
+FROM funcionarios
+GRO*P BY departamento
+HAVING AVG(salar*o) > 3000;
+```
+
+---
+
+# Regra para *emorização
+
+Pense assim:
+
+- WHERE *rabalha com registros.
+- GROUP BY *ria grupos.
+- HAVING trabalha com *rupos.
+
+---
+
+# Exemplo Simples
+
+``*sql
+SELECT *
+FROM alunos
+WHERE ida*e >= 18
+ORDER BY nome
+LIMIT 10;
+``*
+
+Ordem executada:
+
+1. FROM alunos*2. WHERE idade >= 18
+3. SELECT *
+4* ORDER BY nome
+5. LIMIT 10
+
+---
+
+#*Erros Comuns
+
+## Erro 1
+
+Achar que*o SELECT é executado primeiro.
+
+--*
 
 ## Erro 2
 
-Util*zar*funções agregadas dentro do WHERE.*
+Usar funções agregada* dentro do WHERE.
+
 ---
 
-*# Erro 3
-
-Confundir*WHERE com HAVING.
+## Erro 3
+*Confundir WHERE com HAVING.
 
 ---
 
 *# Erro 4
 
-*squ*cer a sequência lógica da*execução.
+Não conhecer a ordem lóg*ca do SQL.
 
 ---
 
 # Resumo
 
-## FROM*
-Origem dos dados.
+- FROM * busca os dados
+- WHERE → filtra r*gistros
+- GROUP BY → agrupa regist*os
+- HAVING → filtra grupos
+- SELE*T → escolhe colunas
+- ORDER BY → o*dena resultados
+- LIMIT → limita r*sultados
 
 ---
 
-*# WHERE
+# Tabela Resumo
 
-Filtro de registros.
-
----*
-*# GROUP BY
-
-Agrupamento.
-
----
-
-*# HAVING
-
-Filtro de grupos.
+| *rdem | Cláusula | Função |
+|------*-|----------|---------|
+| 1 | FROM*| Buscar dados |
+| 2 | WHERE | Fil*rar registros |
+| 3 | GROUP BY | A*rupar registros |
+| 4 | HAVING | F*ltrar grupos |
+| 5 | SELECT | Esco*her colunas |
+| 6 | ORDER BY | Ordenar |
+| 7 | LIMIT | Limitar resultados |
 
 ---
-
-*# SELECT
-
-Seleciona colunas.
-
----
-**# ORDER BY*
-Ordenação.
-
----
-
-## LIMIT
-
-Limita*ão dos resultados.
-
----
-
-# Tabela *esumo
-
-| Ordem | Cláusula | Função*|
-|--------|----------|---------|
-* * | FROM | Origem dos dados |
-| * | WHERE | Filtra registros |
-| * | GROUP BY | Agrupa registros |
-|** | HAVING | Filtra grupos |
-| * | SELECT | Seleciona colunas |
-|*6*| ORDER BY | Ordena |
-|*7 | LIMIT | Limita resultados |
-
--*-
 
 # Cola para Prova
 
+Memorize a sequência:
+
 ```text
-FROM*WHERE
+FROM
+WHERE
 GROUP BY
 HAVING
-SELECT*ORDER*BY
+SELECT
+ORDER BY
 LIMIT
 ```
 
-*rase para decorar:
+Frase para decorar:
 
-"Prime*ro busco os*dados, depois filtro, agrupo, filt*o grupos, seleciono, ordeno e limi*o."
-
----
-
-* Questões de Revisão
-
-## 1. Qual c*áus*la é executada primeiro?
-
-Resposta*
-
-```text*FROM
-```
+"Primeiro busco os dados, depois filtro, agrupo, filtro grupos, seleciono, ordeno e limito."
 
 ---
 
-## 2. Qual cláus*la filtra registros?
+# Questões de Revisão
+
+## 1. Qual cláusula é executada primeiro?
 
 Resposta:
 
-`*`text
-WHERE
-```
-
-*--
-
-## 3. Qual cláusula filtra gru*os?
-
-Resposta:
-
-```text*HAVING
-```
+FROM.
 
 ---
 
-## 4. O SELECT*é executado antes*ou depois do GROUP BY?
+## 2. Qual cláusula filtra registros?
 
 Resposta:
-*Depois.
+
+WHERE.
 
 ---
 
-## 5. Qual cláus*la é*executada por último?
+## 3. Qual cláusula filtra grupos?
 
 Resposta:
 
-*``text
-LIMIT
-```
-``*
+HAVING.
+
+---
+
+## 4. O SELECT é executado antes ou depois do GROUP BY?
+
+Resposta:
+
+Depois.
+
+---
+
+## 5. Qual cláusula é executada por último?
+
+Resposta:
+
+LIMIT.
